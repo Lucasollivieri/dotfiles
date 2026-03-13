@@ -1,0 +1,141 @@
+@import "colors/colors.css";
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "Adwaita Sans", "JetBrainsMono Nerd Font Propo", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0px;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+#workspaces {
+    background-color: @bg0;
+    padding: 5px 3px;
+    margin: 5px 0px 0px 10px;
+    border-radius: 18px;
+    border: 1px solid @bg1;
+    color: @fg;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    margin: 0 3px;
+    border-radius: 50px;
+    background-color: @bg1;
+    min-width: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    transition: all 0.3s ease-in-out;
+    background-color: @blue;
+    color: @bg0;
+    min-width: 50px;
+    font-size: 13px;
+}
+
+#workspaces button:hover {
+    background: @fg;
+    color: @bg2
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#clock,
+#custom-weather,
+#battery,
+#network,
+#custom-power,
+#custom-notification,
+#tray,
+#pulseaudio {
+    padding: 0px 12px;
+    background-color: @bg0;
+    border-radius: 50px;
+    margin: 11px 5px;
+}
+
+#custom-weather {
+    transition: all 0.2s ease-in-out;
+    color: @gray;
+}
+
+#tray {
+    transition: all 0.2s ease-in-out;
+    color: @blue;
+}
+
+#custom-notification {
+    transition: all 0.2s ease-in-out;
+    color: @blue;
+}
+
+#custom-power {
+    transition: all 0.2s ease-in-out;
+    color: @red;
+}
+
+#custom-archlogo {
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-left: 10px;
+  margin-left: 15px;
+}
+
+#clock {
+    padding-left: 10px;
+    transition: all 0.2s ease-in-out;
+    color: @blue;
+}
+
+#battery {
+    transition: all 0.2s ease-in-out;
+    color: @green;
+}
+
+#battery.charging, #battery.plugged {
+    transition: all 0.2s ease-in-out;
+    color: @green;
+
+}
+
+#battery.critical:not(.charging) {
+    transition: all 0.2s ease-in-out;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    transition: all 0.2s ease-in-out;
+    color: @aqua
+}
+
+#network.disconnected {
+    transition: all 0.2s ease-in-out;
+    color: @grey0
+}
+
+#pulseaudio {
+    transition: all 0.2s ease-in-out;
+    color: @green;
+    
+}
+
+#pulseaudio.muted {
+    transition: all 0.2s ease-in-out;
+    color: @grey11
+}
