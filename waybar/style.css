@@ -36,14 +36,14 @@ window#waybar {
 
 #workspaces button.active {
     transition: all 0.3s ease-in-out;
-    background-color: @blue;
+    background-color: @green1;
     color: @bg0;
     min-width: 50px;
     font-size: 13px;
 }
 
 #workspaces button:hover {
-    background: @fg;
+    background: @white;
     color: @bg2
 }
 
@@ -72,12 +72,12 @@ window#waybar {
 
 #tray {
     transition: all 0.2s ease-in-out;
-    color: @blue;
+    color: @blue2;
 }
 
 #custom-notification {
     transition: all 0.2s ease-in-out;
-    color: @blue;
+    color: @blue2;
 }
 
 #custom-power {
@@ -96,7 +96,7 @@ window#waybar {
 #clock {
     padding-left: 10px;
     transition: all 0.2s ease-in-out;
-    color: @blue;
+    color: @green1;
 }
 
 #battery {
@@ -121,7 +121,7 @@ window#waybar {
 
 #network {
     transition: all 0.2s ease-in-out;
-    color: @aqua
+    color: @green1
 }
 
 #network.disconnected {
@@ -131,7 +131,7 @@ window#waybar {
 
 #pulseaudio {
     transition: all 0.2s ease-in-out;
-    color: @green;
+    color: @green1;
     
 }
 
