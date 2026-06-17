@@ -2,96 +2,105 @@
   "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "top",
-	"cssPriority": "user",
-
-  "control-center-width": 380,
-  "control-center-height": 860, 
-  "control-center-margin-top": 2,
-  "control-center-margin-bottom": 2,
-  "control-center-margin-right": 1,
-  "control-center-margin-left": 0,
-
-  "notification-window-width": 400,
-  "notification-icon-size": 30,
-  "notification-body-image-height": 160,
-  "notification-body-image-width": 200,
-
-  "timeout": 4,
-  "timeout-low": 2,
-  "timeout-critical": 6,
-  
-  "fit-to-screen": false,
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "cssPriority": "user",
+  "control-center-width": 400,
+  "control-center-margin-top": 52,
+  "control-center-margin-bottom": 15,
+  "control-center-margin-right": 15,
+  "control-center-margin-left": 15,
+  "notification-2fa-action": true,
+  "notification-inline-replies": false,
+  "notification-window-width": 380,
+  "notification-icon-size": 48,
+  "notification-body-image-height": 240,
+  "notification-body-image-width": 240,
+  "timeout": 8,
+  "timeout-low": 4,
+  "timeout-critical": 0,
+  "fit-to-screen": true,
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
-  "transition-time": 200,
-  "hide-on-clear": false,
-  "hide-on-action": false,
+  "transition-time": 150,
+  "hide-on-clear": true,
+  "hide-on-action": true,
   "script-fail-notify": true,
-  "scripts": {
-    "example-script": {
-      "exec": "echo 'Do something...'",
-      "urgency": "Normal"
-    }
-  },
-  "notification-visibility": {
-    "example-name": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "Spotify"
-    }
-  },
   "widgets": [
-    "label",
-    "buttons-grid",
     "mpris",
     "title",
-    "dnd",
-    "notifications"
+    "volume",
+    "notifications",
+    "backlight",
+    "buttons-grid"
   ],
   "widget-config": {
     "title": {
       "text": "Notifications",
       "clear-all-button": true,
-      "button-text": " 󰎟 "
-    },
-    "dnd": {
-      "text": "Do not disturb"
-    },
-    "label": {
-      "max-lines": 1,
-      "text": " "
+      "button-text": "Clear"
     },
     "mpris": {
-      "image-size": 96,
+      "image-size": 72,
       "image-radius": 12
     },
     "volume": {
-      "label": "󰕾",
-        "show-per-app": true
+      "label": "",
+      "step": 5
+    },
+    "backlight": {
+      "label": "󰃞",
+      "step": 5
     },
     "buttons-grid": {
       "actions": [
         {
-          "label": " ",
-          "command": "amixer set Master toggle"
+          "label": "",
+          "command": "kitty nmtui",
+          "tooltip": "Network"
         },
         {
-          "label": "",
-          "command": "amixer set Capture toggle"
+          "label": "",
+          "command": "blueman-manager",
+          "tooltip": "Bluetooth"
         },
         {
-          "label": " ",
-          "command": "nm-connection-editor"
+          "label": "󰂛",
+          "command": "swaync-client -d",
+          "type": "toggle",
+          "tooltip": "DND"
         },
         {
-          "label": "󰂯",
-          "command": "blueman-manager"
+          "label": "󰍜",
+          "command": "gnome-network-displays",
+          "tooltip": "Screens"
         },
         {
-          "label": "󰏘",
-          "command": "nwg-look"
+          "label": "󰈙",
+          "command": "kitty bash -i -c 'Docs'",
+          "tooltip": "Files"
+        },
+        {
+          "label": "",
+          "command": "kitty bash -i -c 'Settings'",
+          "tooltip": "Settings"
+        },
+        {
+          "label": "",
+          "command": "hyprlock",
+          "tooltip": "Lock"
+        },
+        {
+          "label": "󰜉",
+          "command": "reboot",
+          "tooltip": "Reboot"
+        },
+        {
+          "label": "⏻",
+          "command": "shutdown now",
+          "tooltip": "Power Off"
         }
-        
       ]
     }
   }
