@@ -32,7 +32,7 @@ window {
 
 /* ── Base Reset ───────────────────────────────────────────────────── */
 * {
-  font-family: "Inter", "SF Pro Text", sans-serif;
+  font-family: "Inter", "JetBrainsMono Nerd Font", "Font Awesome 7 Free", "SF Pro Text", sans-serif;
   font-size: 17px;
   color: @theme_fg;
   border: none;
