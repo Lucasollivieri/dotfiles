@@ -1,19 +1,7 @@
 configuration {
-    modi:                "drun,run,window";
-    show-icons:          true;
-    icon-theme:          "Papirus-Dark";
-    font:                "JetBrains Mono 11";
-
-    dynamic:             false;
-    fixed-num-lines:     true;
-
-    display-drun:        " ";
-    drun-prompt:         " ";
-
-    drun { 
-        lines: 12;
-        columns: 1;
-    }
+    drun-display-format: "{icon} {name}";
+    font: "JetBrainsMono Nerd Font 12";
+    show-icons: true;
 }
 
-@theme "~/.config/rofi/themes/aesthetic.rasi"
+@theme "theme.rasi"

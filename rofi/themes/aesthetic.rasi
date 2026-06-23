@@ -1,21 +1,31 @@
 /**
- * Modern & Aesthetic Rofi Theme
- * Designed for a deep teal/cyan palette matching the desktop theme.
- **/
+ * Cyberpunk Minimalist Premium Theme for Rofi
+ * Inspired by Arch Linux, Hyprland & Cybersecurity / Cyberpunk Minimalist Concept.
+ */
+
+configuration {
+    font:                "JetBrainsMono Nerd Font 11";
+    drun-display-format: "<span font='JetBrainsMono Nerd Font SemiBold 11'>{name}</span>\n[<span font='JetBrainsMono Nerd Font Italic 9.5' foreground='#9AA5B1'>({generic})</span>]";
+    show-icons:          true;
+    icon-theme:          "Papirus-Dark";
+}
 
 * {
-    /* Color Palette */
-    bg-color:            rgba(5, 7, 11, 0.90);
-    bg-alt:              #0C0E14;
-    fg-color:            #D6E3F0;
-    fg-alt:              #7D84AE;
-    accent-color:        #008B8B;
-    accent-highlight:    #6EF3D6;
-    border-color:        #334155;
+    /* Colors */
+    bg-color:            rgba(6, 10, 15, 0.88);
+    surface-color:       rgba(8, 12, 18, 0.92);
+    primary-color:       #1793D1;
+    accent-color:        #00D9FF;
+    hover-color:         rgba(23, 147, 209, 0.08);
+    selected-color:      rgba(0, 217, 255, 0.18);
+    border-color-glow:   rgba(23, 147, 209, 0.55);
+    text-primary:        #F5F7FA;
+    text-secondary:      #9AA5B1;
 
-    /* Global Rofi properties */
+    /* Fonts & Typography */
+    font:                "JetBrainsMono Nerd Font 11";
     background-color:    transparent;
-    text-color:          @fg-color;
+    text-color:          @text-primary;
     margin:              0px;
     padding:             0px;
     spacing:             0px;
@@ -26,88 +36,128 @@ window {
     location:            center;
     anchor:              center;
     fullscreen:          false;
-    width:               640px;
-    height:              480px;
+    width:               760px;
     x-offset:            0px;
     y-offset:            0px;
 
     enabled:             true;
-    border-radius:       16px;
-    border:              2px solid;
-    border-color:        @accent-color;
+    border-radius:       14px;
+    border:              1px solid;
+    border-color:        @border-color-glow;
     background-color:    @bg-color;
-    padding:             24px;
+    padding:             18px;
 }
 
 mainbox {
     enabled:             true;
-    spacing:             20px;
+    spacing:             16px;
     children:            [ "inputbar", "listview" ];
 }
 
 inputbar {
     enabled:             true;
-    spacing:             12px;
-    padding:             12px 16px;
-    border-radius:       10px;
-    background-color:    @bg-alt;
-    border:              1px solid;
-    border-color:        @border-color;
-    text-color:          @fg-color;
-    children:            [ "prompt", "entry" ];
+    spacing:             10px;
+    padding:             10px 16px;
+    border-radius:       12px;
+    background-color:    @surface-color;
+    border:              0px 0px 2px 0px;
+    border-color:        @primary-color;
+    text-color:          @text-primary;
+    children:            [ 
+        "textbox-search-icon", 
+        "textbox-search-apps", 
+        "textbox-separator", 
+        "textbox-arch-logo", 
+        "textbox-arch-rofi", 
+        "entry"
+    ];
 }
 
-prompt {
-    enabled:             true;
-    text-color:          @accent-highlight;
-    font:                "JetBrains Mono Bold 12";
+textbox-search-icon {
+    str:            "";
+    expand:         false;
+    text-color:     @text-secondary;
+    vertical-align: 0.5;
+    font:           "JetBrainsMono Nerd Font 12";
+}
+
+textbox-search-apps {
+    str:            "Search Applications...";
+    expand:         false;
+    text-color:     @text-secondary;
+    vertical-align: 0.5;
+}
+
+textbox-separator {
+    str:            "|";
+    expand:         false;
+    text-color:     rgba(23, 147, 209, 0.30);
+    vertical-align: 0.5;
+}
+
+textbox-arch-logo {
+    str:            "";
+    expand:         false;
+    text-color:     @primary-color;
+    vertical-align: 0.5;
+    font:           "JetBrainsMono Nerd Font 12";
+}
+
+textbox-arch-rofi {
+    str:            "Arch Rofi";
+    expand:         false;
+    text-color:     @text-primary;
+    vertical-align: 0.5;
+    font:           "JetBrainsMono Nerd Font Bold 11";
 }
 
 entry {
     enabled:             true;
     background-color:    transparent;
-    text-color:          inherit;
+    text-color:          @text-primary;
     cursor:              text;
-    placeholder:         "Search applications...";
-    placeholder-color:   @fg-alt;
+    cursor-color:        @primary-color;
+    placeholder:         "";
+    placeholder-color:   @text-secondary;
+    vertical-align:      0.5;
 }
 
 listview {
     enabled:             true;
     columns:             1;
-    lines:               7;
+    lines:               6;
     cycle:               true;
     dynamic:             true;
     scrollbar:           false;
     layout:              vertical;
     reverse:             false;
-    fixed-height:        true;
+    fixed-height:        false;
     fixed-columns:       true;
     
-    spacing:             8px;
+    spacing:             6px;
     background-color:    transparent;
-    text-color:          @fg-color;
+    text-color:          @text-primary;
     cursor:              "default";
 }
 
 element {
     enabled:             true;
-    spacing:             12px;
-    padding:             10px 14px;
-    border-radius:       8px;
+    spacing:             14px;
+    padding:             8px 16px;
+    border-radius:       12px;
     background-color:    transparent;
-    text-color:          @fg-color;
+    text-color:          @text-primary;
     cursor:              pointer;
 }
 
 element normal.normal {
     background-color:    transparent;
-    text-color:          @fg-color;
+    text-color:          @text-primary;
 }
 
 element alternate.normal {
     background-color:    transparent;
-    text-color:          @fg-color;
+    text-color:          @text-primary;
 }
 
 element normal.urgent, element alternate.urgent {
@@ -116,34 +166,35 @@ element normal.urgent, element alternate.urgent {
 }
 
 element normal.active, element alternate.active {
-    background-color:    @accent-color;
-    text-color:          @fg-color;
+    background-color:    @surface-color;
+    text-color:          @text-primary;
 }
 
 element selected.normal {
-    background-color:    @bg-alt;
-    border:              1px solid;
+    background-color:    @selected-color;
+    border:              0px 0px 0px 4px;
     border-color:        @accent-color;
-    text-color:          @accent-highlight;
+    text-color:          @text-primary;
 }
 
 element selected.urgent {
     background-color:    #E34F4F;
-    text-color:          @fg-color;
+    text-color:          @text-primary;
 }
 
 element selected.active {
-    background-color:    @bg-alt;
-    border:              1px solid;
-    border-color:        @accent-highlight;
-    text-color:          @accent-highlight;
+    background-color:    @selected-color;
+    border:              0px 0px 0px 4px;
+    border-color:        @accent-color;
+    text-color:          @text-primary;
 }
 
 element-icon {
     background-color:    transparent;
     text-color:          inherit;
-    size:                28px;
+    size:                32px;
     cursor:              inherit;
+    vertical-align:      0.5;
 }
 
 element-text {
@@ -152,4 +203,5 @@ element-text {
     cursor:              inherit;
     vertical-align:      0.5;
     horizontal-align:    0.0;
+    markup:              true;
 }
