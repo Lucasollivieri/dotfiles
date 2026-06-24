@@ -3,7 +3,7 @@
 CONFIG_FILE="$HOME/.config/swaync/config.json"
 
 update_time() {
-    CURRENT_TIME=$(date +"%I:%M%p")
+    CURRENT_TIME=$(date +"%H:%M")
     CURRENT_DATE=$(date +"%A, %B %d")
 
     # Read current values in config
@@ -11,7 +11,7 @@ update_time() {
     OLD_DATE=$(jq -r '.["widget-config"]["label#date"].text' "$CONFIG_FILE" 2>/dev/null)
 
     if [[ "$CURRENT_TIME" != "$OLD_TIME" || "$CURRENT_DATE" != "$OLD_DATE" ]]; then
-        TMP_FILE=$(mktemp)
+        TMP_FILE=$(mktemp -p "$(dirname "$CONFIG_FILE")")
         jq --arg t "$CURRENT_TIME" --arg d "$CURRENT_DATE" \
            '.["widget-config"]["label#clock"].text = $t | .["widget-config"]["label#date"].text = $d' \
            "$CONFIG_FILE" > "$TMP_FILE" && mv "$TMP_FILE" "$CONFIG_FILE"

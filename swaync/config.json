@@ -32,17 +32,18 @@
     "label#date",
     "buttons-grid",
     "buttons-grid#tabs",
+    "mpris",
     "notifications",
     "calendar"
   ],
   "widget-config": {
     "label#clock": {
       "max-lines": 1,
-      "text": "12:07PM"
+      "text": "11:00"
     },
     "label#date": {
       "max-lines": 1,
-      "text": "Tuesday, June 23"
+      "text": "Wednesday, June 24"
     },
     "buttons-grid": {
       "buttons-per-row": 2,
@@ -94,6 +95,10 @@
           "command": "pavucontrol-qt"
         }
       ]
+    },
+    "mpris": {
+      "image-size": 96,
+      "image-radius": 12
     }
   }
 }
