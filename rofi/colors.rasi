@@ -1,10 +1,12 @@
 @import "~/.config/theme/colors.rasi"
 
 * {
+    blue:           #76ABAE;
     background:     @bg;
     background-alt: @bg-highlight;
     foreground:     @fg;
     selected:       @blue;
     active:         @green;
     urgent:         @red;
+    border:         #31363F;
 }

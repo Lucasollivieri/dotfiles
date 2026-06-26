@@ -6,7 +6,7 @@
 @define-color bg_main #0d0f14;              /* Deep dark background */
 @define-color card_bg #242630;              /* Card/Notification background */
 @define-color card_inactive #2b2d38;        /* Inactive quick toggles */
-@define-color card_active #d8d4f5;          /* Active lavender card accent */
+@define-color card_active #76ABAE;          /* Active cyan/teal card accent */
 @define-color text_main #ffffff;            /* Primary white text */
 @define-color text_sec #9da3b0;             /* Secondary gray text */
 @define-color border_glow rgba(216, 212, 245, 0.08); /* Translucent bluish border */
@@ -14,7 +14,7 @@
 
 /* ── 2. Base Reset & Font Configuration ─────────────────────────── */
 * {
-  font-family: "Inter", "SF Pro Display", "Roboto", "JetBrainsMono Nerd Font", sans-serif;
+  font-family: "Adwaita Sans", "Noto Sans", "Liberation Sans", "JetBrainsMono Nerd Font Propo", sans-serif;
   font-size: 15px;
   color: @text_main;
   border: none;
@@ -41,7 +41,7 @@ blankwindow {
   border: 1px solid @border_glow;
   border-radius: 24px;
   padding: 16px;
-  min-width: 380px;
+  min-width: 460px;
   box-shadow: none;
 }
 
@@ -108,7 +108,7 @@ blankwindow {
   transform: translateY(-1px);
 }
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
-  background-color: #e2dffa;
+  background-color: #8fc8cb;
 }
 
 /* ── 6. Tab Bar Widget (Abas - Notifications / Audio) ─────────────── */
@@ -168,6 +168,10 @@ blankwindow {
   background: transparent;
   box-shadow: none;
 }
+.notification-row label,
+.notification-row label * {
+  font-style: normal !important;
+}
 .notification-row:focus,
 .notification-row:hover {
   background: transparent;
@@ -213,7 +217,7 @@ blankwindow {
   margin-bottom: 4px;
 }
 .control-center .notification .body {
-  font-size: 14px;
+  font-size: 13.5px;
   color: @text_sec;
 }
 .control-center .notification .time {
@@ -291,6 +295,7 @@ calendar.other-month, .widget-calendar.other-month {
 }
 .floating-notifications .notification .body {
   color: @text_sec;
+  font-size: 13.5px;
 }
 .floating-notifications .notification .time {
   font-size: 12px;

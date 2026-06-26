@@ -18,7 +18,7 @@ window {
     location:                    center;
     anchor:                      center;
     border:                      2px;
-    border-color:                @foreground;
+    border-color:                @border;
     fullscreen:                  false;
     width:                       800px;
     x-offset:                    0px;
@@ -46,7 +46,7 @@ listbox {
     background-color:            transparent;
     orientation:                 vertical;
     border:                      2px 0px 0px 0px;
-    border-color:                @foreground;
+    border-color:                @border;
     children:                    [ "message", "listview" ];
 }
 
