@@ -28,36 +28,55 @@
   "hide-on-action": true,
   "script-fail-notify": true,
   "widgets": [
+    "title",
     "label#clock",
     "label#date",
-    "buttons-grid",
-    "buttons-grid#tabs",
+    "label#header-system",
+    "volume",
+    "backlight",
+    "buttons-grid#system",
+    "label#header-indicators",
+    "buttons-grid#indicators",
     "mpris",
     "notifications",
     "calendar"
   ],
   "widget-config": {
+    "title": {
+      "text": "Central de Controle",
+      "clear-all-button": true,
+      "button-text": "󰎟 Limpar"
+    },
     "label#clock": {
       "max-lines": 1,
-      "text": "14:12"
+      "text": "19:04"
     },
     "label#date": {
       "max-lines": 1,
       "text": "Friday, June 26"
     },
-    "buttons-grid": {
+    "label#header-system": {
+      "max-lines": 1,
+      "text": "Status do Sistema"
+    },
+    "label#header-indicators": {
+      "max-lines": 1,
+      "text": "Indicadores"
+    },
+    "volume": {
+      "label": "󰕾",
+      "show-per-app": true
+    },
+    "backlight": {
+      "label": "󰃠"
+    },
+    "buttons-grid#system": {
       "buttons-per-row": 2,
       "actions": [
         {
           "label": "󰖩  Internet\nConnected",
           "command": "nm-connection-editor",
           "type": "toggle"
-        },
-        {
-          "label": "󰂯  Bluetooth\nEnabled",
-          "command": "blueman-manager",
-          "type": "toggle",
-          "active": true
         },
         {
           "label": "󰖔  Night Light\nActive",
@@ -83,16 +102,32 @@
         }
       ]
     },
-    "buttons-grid#tabs": {
-      "buttons-per-row": 2,
+    "buttons-grid#indicators": {
+      "buttons-per-row": 3,
       "actions": [
         {
-          "label": "Notifications",
-          "command": ""
+          "label": "󰖂  VPN",
+          "command": "nm-connection-editor"
         },
         {
-          "label": "Audio",
-          "command": "pavucontrol-qt"
+          "label": "󰍬  Mic",
+          "command": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        },
+        {
+          "label": "󰖠  Webcam",
+          "command": "echo 'Toggle Webcam'"
+        },
+        {
+          "label": "󰻃  Rec",
+          "command": "echo 'Toggle Recording'"
+        },
+        {
+          "label": "󰂯  Bluetooth",
+          "command": "blueman-manager"
+        },
+        {
+          "label": "󰁹  Bateria",
+          "command": "upower -i $(upower -e | grep battery)"
         }
       ]
     },

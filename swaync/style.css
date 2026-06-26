@@ -65,6 +65,38 @@ blankwindow {
   color: @text_sec;
 }
 
+/* Section Headers */
+.header-system,
+.header-indicators {
+  font-size: 11px;
+  font-weight: 700;
+  color: @text_sec;
+  text-transform: uppercase;
+  margin: 16px 12px 6px 12px;
+  letter-spacing: 1px;
+}
+
+/* Volume & Backlight Sliders */
+.widget-volume,
+.widget-backlight {
+  background-color: @card_bg;
+  padding: 12px 18px;
+  margin: 6px 6px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+.widget-volume scale,
+.widget-backlight scale {
+  margin: 0;
+  padding: 0;
+}
+.widget-volume label,
+.widget-backlight label {
+  font-size: 18px;
+  color: @card_active;
+  margin-right: 12px;
+}
+
 /* ── 5. Quick Settings Grid (Buttons Grid) ───────────────────────── */
 .widget-buttons-grid {
   background-color: transparent;
@@ -77,8 +109,14 @@ blankwindow {
 }
 .widget-buttons-grid > flowbox > flowboxchild {
   padding: 4px;
-  min-width: 154px;
 }
+.system > flowbox > flowboxchild {
+  min-width: 200px;
+}
+.indicators > flowbox > flowboxchild {
+  min-width: 130px;
+}
+
 .widget-buttons-grid > flowbox > flowboxchild > button {
   background-color: @card_inactive;
   color: @text_main;
@@ -94,6 +132,17 @@ blankwindow {
   color: inherit;
   line-height: 1.25;
 }
+
+/* Custom styling for compact indicators grid */
+.indicators > flowbox > flowboxchild > button {
+  min-height: 52px;
+  border-radius: 16px;
+  padding: 8px 10px;
+}
+.indicators > flowbox > flowboxchild > button label {
+  font-size: 11px;
+}
+
 /* Active (checked) toggles */
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
   background-color: @card_active;
@@ -160,6 +209,12 @@ blankwindow {
   margin: 0px 6px 16px 6px;
   border: 1px solid rgba(255, 255, 255, 0.02);
   min-height: 180px;
+}
+.notification-content {
+  margin-right: 24px;
+}
+.notification-action {
+  margin-top: 8px;
 }
 
 /* Notification Rows */
@@ -291,7 +346,9 @@ calendar.other-month, .widget-calendar.other-month {
 }
 .floating-notifications .notification .summary {
   font-weight: 600;
+  font-size: 15px;
   color: @text_main;
+  margin-bottom: 4px;
 }
 .floating-notifications .notification .body {
   color: @text_sec;
