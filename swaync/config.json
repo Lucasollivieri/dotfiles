@@ -6,134 +6,267 @@
   "control-center-layer": "top",
   "layer-shell": true,
   "cssPriority": "user",
-  "control-center-width": 460,
+  "control-center-width": 420,
   "control-center-margin-top": 15,
   "control-center-margin-bottom": 15,
   "control-center-margin-right": 15,
   "control-center-margin-left": 15,
-  "notification-2fa-action": true,
-  "notification-inline-replies": false,
-  "notification-window-width": 460,
-  "notification-icon-size": 48,
-  "notification-body-image-height": 240,
-  "notification-body-image-width": 240,
+  "notification-2fa-action": false,
+  "notification-inline-replies": true,
+  "notification-grouping": true,
+  "notification-visibility": {
+    "system-security-app": {
+      "state": "enabled",
+      "override-urgency": "critical",
+      "app-name": "(?i)system|sistema|networkmanager|gufw|firewall|polkit|security|segurança|auth|login|sudo|ssh|keyring|gpg|hyprland|sway"
+    },
+    "system-security-summary": {
+      "state": "enabled",
+      "override-urgency": "critical",
+      "summary": "(?i)system|sistema|security|segurança|auth|login|sudo|ssh|keyring|gpg|alerta|alert|erro|error|danger|perigo|critical"
+    },
+    "updates-app": {
+      "state": "enabled",
+      "override-urgency": "low",
+      "app-name": "(?i)update|updates|atualiz|pacman|yay|apt|dnf|upgrade"
+    },
+    "updates-summary": {
+      "state": "enabled",
+      "override-urgency": "low",
+      "summary": "(?i)update|updates|atualiz|upgrade"
+    }
+  },
+  "notification-window-width": 420,
+  "notification-icon-size": 40,
+  "notification-body-image-height": 180,
+  "notification-body-image-width": 220,
   "timeout": 8,
   "timeout-low": 4,
   "timeout-critical": 0,
   "fit-to-screen": true,
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
-  "transition-time": 200,
+  "transition-time": 250,
   "hide-on-clear": true,
   "hide-on-action": true,
   "script-fail-notify": true,
   "widgets": [
-    "title",
     "label#clock",
     "label#date",
+    "buttons-grid#status-chips",
+    "label#header-connectivity",
+    "buttons-grid#connectivity",
     "label#header-system",
     "volume",
-    "backlight",
     "buttons-grid#system",
-    "label#header-indicators",
-    "buttons-grid#indicators",
+    "label#header-appearance",
+    "buttons-grid#appearance",
     "mpris",
+    "title#notifications",
     "notifications",
-    "calendar"
+    "buttons-grid#sysinfo-grid"
   ],
   "widget-config": {
-    "title": {
-      "text": "Central de Controle",
-      "clear-all-button": true,
-      "button-text": "󰎟 Limpar"
+    "buttons-grid#sysinfo-grid": {
+      "buttons-per-row": 4,
+      "actions": [
+        {
+          "label": "CPU\n13%",
+          "command": "true"
+        },
+        {
+          "label": "RAM\n56%",
+          "command": "true"
+        },
+        {
+          "label": "NET\n↓24.4 MB/s",
+          "command": "true"
+        },
+        {
+          "label": "UPTIME\n5h 32m",
+          "command": "true"
+        }
+      ]
     },
     "label#clock": {
       "max-lines": 1,
-      "text": "19:04"
+      "text": "16:33"
     },
     "label#date": {
       "max-lines": 1,
-      "text": "Friday, June 26"
+      "text": "Friday, August 14"
+    },
+    "buttons-grid#status-chips": {
+      "buttons-per-row": 6,
+      "actions": [
+        {
+          "label": "󰌾 VPN",
+          "type": "toggle",
+          "command": "sh -c 'flatpak run com.protonvpn.www &'",
+          "update-command": "sh -c 'if ls /sys/class/net/ | grep -E -q \"proton|pvpn\" || nmcli connection show --active | grep -q -i -E \"proton|pvpn\"; then echo true; else echo false; fi'"
+        },
+        {
+          "label": "󰍬 MIC",
+          "type": "toggle",
+          "command": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+          "update-command": "sh -c 'wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo false || echo true'"
+        },
+        {
+          "label": "󰄀 CAM",
+          "type": "toggle",
+          "command": "true",
+          "update-command": "sh -c 'ls /dev/video* >/dev/null 2>&1 && echo true || echo false'"
+        },
+        {
+          "label": "󰑊 REC",
+          "type": "toggle",
+          "command": "true",
+          "update-command": "sh -c 'pgrep -x wf-recorder >/dev/null 2>&1 && echo true || echo false'"
+        },
+        {
+          "label": "󰂯 BT",
+          "type": "toggle",
+          "command": "/home/xateau/.config/swaync/toggle_bluetooth.sh",
+          "update-command": "sh -c 'rfkill list bluetooth | grep -q \"Soft blocked: no\" && echo true || echo false'"
+        },
+        {
+          "label": "󰁹 AC",
+          "type": "toggle",
+          "command": "true",
+          "update-command": "echo true"
+        }
+      ]
+    },
+    "label#header-connectivity": {
+      "max-lines": 1,
+      "text": "Connectivity"
     },
     "label#header-system": {
       "max-lines": 1,
-      "text": "Status do Sistema"
+      "text": "System"
     },
-    "label#header-indicators": {
+    "label#header-appearance": {
       "max-lines": 1,
-      "text": "Indicadores"
+      "text": "Appearance"
+    },
+    "title#notifications": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "󰎟 Clear all"
     },
     "volume": {
       "label": "󰕾",
-      "show-per-app": true
+      "show-per-app": false
     },
     "backlight": {
       "label": "󰃠"
     },
-    "buttons-grid#system": {
-      "buttons-per-row": 2,
+    "buttons-grid#connectivity": {
+      "buttons-per-row": 3,
       "actions": [
         {
-          "label": "󰖩  Internet\nConnected",
+          "label": "󰖩\nInternet",
+          "command": "nm-connection-editor",
+          "type": "toggle",
+          "active": true
+        },
+        {
+          "label": "󰂯\nBluetooth",
+          "command": "/home/xateau/.config/swaync/toggle_bluetooth.sh",
+          "update-command": "sh -c 'rfkill list bluetooth | grep -q \"Soft blocked: no\" && echo true || echo false'",
+          "type": "toggle",
+          "active": true
+        },
+        {
+          "label": "󰌾\nVPN",
+          "command": "sh -c 'flatpak run com.protonvpn.www &'",
+          "update-command": "sh -c 'if ls /sys/class/net/ | grep -E -q \"proton|pvpn\" || nmcli connection show --active | grep -q -i -E \"proton|pvpn\"; then echo true; else echo false; fi'",
+          "type": "toggle"
+        },
+        {
+          "label": "󰖔\nHotspot",
           "command": "nm-connection-editor",
           "type": "toggle"
         },
         {
-          "label": "󰖔  Night Light\nActive",
+          "label": "󰀝\nAirplane",
+          "command": "sh -c 'rfkill list | grep -q \"Soft blocked: yes\" && rfkill unblock all || rfkill block wifi bluetooth'",
+          "type": "toggle"
+        },
+        {
+          "label": "󰍜\nDND",
+          "command": "swaync-client -d",
+          "update-command": "swaync-client -D",
+          "type": "toggle"
+        }
+      ]
+    },
+    "buttons-grid#system": {
+      "buttons-per-row": 3,
+      "actions": [
+        {
+          "label": "󰏘\nPower",
+          "command": "sh -c 'powerprofilesctl set power-saver || true'",
+          "type": "toggle",
+          "active": false
+        },
+        {
+          "label": "󰍹\nShare",
+          "command": "sh -c 'command -v grimblast >/dev/null && grimblast copy area || hyprshot -m region || true'",
+          "type": "toggle"
+        },
+        {
+          "label": "󰌾\nLock",
+          "command": "sh -c 'hyprlock || swaylock || loginctl lock-session'",
+          "type": "toggle"
+        },
+        {
+          "label": "󰍬\nMic",
+          "command": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+          "type": "toggle"
+        },
+        {
+          "label": "󰄀\nCamera",
+          "command": "sh -c 'notify-send Camera \"Check privacy indicator in status row\"'",
+          "type": "toggle"
+        },
+        {
+          "label": "󰒓\nSettings",
+          "command": "sh -c 'command -v nwg-look >/dev/null && nwg-look || kitty'",
+          "type": "toggle"
+        }
+      ]
+    },
+    "buttons-grid#appearance": {
+      "buttons-per-row": 3,
+      "actions": [
+        {
+          "label": "󰖔\nNight",
           "command": "hyprshade toggle night-light",
           "type": "toggle"
         },
         {
-          "label": "󰍜  Do Not Disturb\nOn",
-          "command": "swaync-client -d",
-          "update-command": "swaync-client -D",
-          "type": "toggle"
-        },
-        {
-          "label": "󰏘  Theme\nDark",
+          "label": "󰓗\nDark",
           "command": "nwg-look",
           "type": "toggle",
           "active": true
         },
         {
-          "label": "  Settings\nSystem",
-          "command": "kitty bash -i -c 'Settings'",
+          "label": "󰏘\nOpacity",
+          "command": "sh -c 'notify-send Appearance \"Transparency is controlled by swaync/style.css\"'",
           "type": "toggle"
         }
       ]
     },
-    "buttons-grid#indicators": {
-      "buttons-per-row": 3,
-      "actions": [
-        {
-          "label": "󰖂  VPN",
-          "command": "nm-connection-editor"
-        },
-        {
-          "label": "󰍬  Mic",
-          "command": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        },
-        {
-          "label": "󰖠  Webcam",
-          "command": "echo 'Toggle Webcam'"
-        },
-        {
-          "label": "󰻃  Rec",
-          "command": "echo 'Toggle Recording'"
-        },
-        {
-          "label": "󰂯  Bluetooth",
-          "command": "blueman-manager"
-        },
-        {
-          "label": "󰁹  Bateria",
-          "command": "upower -i $(upower -e | grep battery)"
-        }
-      ]
-    },
     "mpris": {
-      "image-size": 96,
-      "image-radius": 12
+      "image-size": 82,
+      "image-radius": 10
+    },
+    "label#status": {
+      "text": "󰖩 ON   󰂯 ON   󰌾 OFF   󰍬 ON\n󰄀 OFF   󰑊 OFF   󰁹 AC"
+    },
+    "label#sysinfo": {
+      "text": "CPU 4%   RAM 42%   TEMP --\nNET D 22847K/s  U 11942K/s\nUPTIME 5h, 52m"
     }
   }
 }
