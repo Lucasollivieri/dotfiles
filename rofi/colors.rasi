@@ -1,7 +1,11 @@
-@import "~/.config/theme/colors.rasi"
-
 * {
+    bg:             #222831;
+    bg-highlight:   #31363F;
+    fg:             #EEEEEE;
     blue:           #76ABAE;
+    green:          #9ece6a;
+    red:            #f7768e;
+
     background:     @bg;
     background-alt: @bg-highlight;
     foreground:     @fg;

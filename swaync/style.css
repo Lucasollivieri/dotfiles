@@ -337,7 +337,7 @@ blankwindow {
   color: @text_muted;
 }
 .control-center-list-placeholder image {
-  -gtk-icon-source: url("/home/xateau/.config/swaync/icons/bell.svg");
+  -gtk-icon-source: url("/home/rigille/.config/swaync/icons/bell.svg");
   -gtk-icon-size: 24px;
   color: @text_muted;
   margin-bottom: 6px;
@@ -710,7 +710,7 @@ blankwindow {
   box-shadow: none;
 }
 .inline-reply-button {
-  background-image: url("/home/xateau/.config/swaync/icons/send.svg");
+  background-image: url("/home/rigille/.config/swaync/icons/send.svg");
   background-size: 16px 16px;
   background-position: center;
   background-repeat: no-repeat;

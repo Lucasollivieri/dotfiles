@@ -1,3 +1,5 @@
 .cache
 *.log
 *.lock
+swaync/tmp.*
+

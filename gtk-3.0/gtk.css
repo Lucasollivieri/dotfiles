@@ -1,0 +1,10 @@
+/* Remove CSD drop shadows and invisible margins in GTK3 under Wayland/XWayland */
+decoration,
+decoration:backdrop,
+.window-frame,
+.window-frame:backdrop {
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+}

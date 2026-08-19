@@ -71,30 +71,30 @@
       "buttons-per-row": 4,
       "actions": [
         {
-          "label": "CPU\n13%",
+          "label": "CPU\n26%",
           "command": "true"
         },
         {
-          "label": "RAM\n56%",
+          "label": "RAM\n65%",
           "command": "true"
         },
         {
-          "label": "NET\n↓24.4 MB/s",
+          "label": "NET\n↓1.2 MB/s",
           "command": "true"
         },
         {
-          "label": "UPTIME\n5h 32m",
+          "label": "UPTIME\n2h 53m",
           "command": "true"
         }
       ]
     },
     "label#clock": {
       "max-lines": 1,
-      "text": "16:33"
+      "text": "10:51"
     },
     "label#date": {
       "max-lines": 1,
-      "text": "Friday, August 14"
+      "text": "Wednesday, August 19"
     },
     "buttons-grid#status-chips": {
       "buttons-per-row": 6,
@@ -126,7 +126,7 @@
         {
           "label": "󰂯 BT",
           "type": "toggle",
-          "command": "/home/xateau/.config/swaync/toggle_bluetooth.sh",
+          "command": "/home/rigille/.config/swaync/toggle_bluetooth.sh",
           "update-command": "sh -c 'rfkill list bluetooth | grep -q \"Soft blocked: no\" && echo true || echo false'"
         },
         {
@@ -172,7 +172,7 @@
         },
         {
           "label": "󰂯\nBluetooth",
-          "command": "/home/xateau/.config/swaync/toggle_bluetooth.sh",
+          "command": "/home/rigille/.config/swaync/toggle_bluetooth.sh",
           "update-command": "sh -c 'rfkill list bluetooth | grep -q \"Soft blocked: no\" && echo true || echo false'",
           "type": "toggle",
           "active": true
