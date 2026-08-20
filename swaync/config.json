@@ -71,30 +71,30 @@
       "buttons-per-row": 4,
       "actions": [
         {
-          "label": "CPU\n26%",
+          "label": "CPU\n21%",
           "command": "true"
         },
         {
-          "label": "RAM\n65%",
+          "label": "RAM\n73%",
           "command": "true"
         },
         {
-          "label": "NET\n↓1.2 MB/s",
+          "label": "NET\n↓83.6 MB/s",
           "command": "true"
         },
         {
-          "label": "UPTIME\n2h 53m",
+          "label": "UPTIME\n4h 4m",
           "command": "true"
         }
       ]
     },
     "label#clock": {
       "max-lines": 1,
-      "text": "10:51"
+      "text": "11:46"
     },
     "label#date": {
       "max-lines": 1,
-      "text": "Wednesday, August 19"
+      "text": "Thursday, August 20"
     },
     "buttons-grid#status-chips": {
       "buttons-per-row": 6,
