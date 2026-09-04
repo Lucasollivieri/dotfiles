@@ -2,4 +2,4 @@
 *.log
 *.lock
 swaync/tmp.*
-
+*.pre-redesign

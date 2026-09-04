@@ -1,44 +1,51 @@
-/* ==================================================================
-   SwayNC Premium Notification Theme — Modern Card Edition
-   Features: App avatars, priority indicators, group expand/collapse,
-   smooth animations, quick actions, relative time display,
-   glassmorphism, and premium card design.
-   ================================================================== */
+/* =============================================================================
+   SwayNC Premium Hyprland Rice Theme — Modern Glassmorphism Edition
+   Palette: Tokyo Night / Catppuccin Mocha / Nord with Ice Cyan (#76ABAE) Accents
+   Typography: JetBrainsMono Nerd Font
+   ============================================================================= */
 
-/* ── 1. Color Palette Definitions ───────────────────────────────── */
-@define-color bg_panel         rgba(12, 14, 22, 0.82);
-@define-color bg_blur          rgba(15, 18, 28, 0.75);
-@define-color border_glass     rgba(255, 255, 255, 0.06);
-@define-color border_glow      rgba(118, 171, 174, 0.25);
-@define-color card_bg          rgba(22, 25, 38, 0.70);
-@define-color card_bg_hover    rgba(32, 36, 52, 0.88);
-@define-color card_active      #76ABAE;
-@define-color card_active_text #0d1117;
-@define-color card_inactive    rgba(255, 255, 255, 0.06);
-@define-color card_hover       rgba(255, 255, 255, 0.10);
-@define-color text_main        #e8eaf0;
-@define-color text_sec         rgba(232, 234, 240, 0.70);
-@define-color text_muted       rgba(232, 234, 240, 0.38);
-@define-color accent_cyan      #76ABAE;
-@define-color accent_red       rgba(247, 118, 142, 1);
-@define-color accent_amber     rgba(224, 175, 104, 1);
-@define-color accent_green     rgba(115, 218, 148, 1);
-@define-color shadow_deep      rgba(0, 0, 0, 0.65);
-@define-color shadow_card      rgba(0, 0, 0, 0.40);
+/* ── 1. Color Palette Definitions ─────────────────────────────────────────── */
+@define-color bg_panel             rgba(16, 19, 27, 0.76);
+@define-color bg_card              rgba(25, 29, 41, 0.72);
+@define-color bg_card_hover        rgba(36, 42, 60, 0.88);
 
-/* ── 2. Base Reset & Font ────────────────────────────────────────── */
+@define-color border_glass         rgba(255, 255, 255, 0.08);
+@define-color border_card          rgba(255, 255, 255, 0.07);
+@define-color border_glow          rgba(118, 171, 174, 0.45);
+@define-color border_active        #b2f0f3;
+
+@define-color accent_cyan          #76ABAE;
+@define-color accent_cyan_bright   #9fe3e6;
+@define-color accent_cyan_dim      rgba(118, 171, 174, 0.22);
+@define-color accent_blue          #7aa2f7;
+@define-color accent_purple        #bb9af7;
+@define-color accent_red           #f7768e;
+@define-color accent_amber         #e0af68;
+@define-color accent_green         #9ece6a;
+
+@define-color text_main            #f0f3f8;
+@define-color text_sec             rgba(240, 243, 248, 0.75);
+@define-color text_muted           rgba(240, 243, 248, 0.45);
+@define-color text_dark            #0b0f14;
+
+@define-color shadow_deep          rgba(0, 0, 0, 0.60);
+@define-color shadow_card          rgba(0, 0, 0, 0.30);
+@define-color shadow_glow          rgba(118, 171, 174, 0.40);
+
+/* ── 2. Base Reset & Font ─────────────────────────────────────────────────── */
 * {
-  font-family: "Inter", "Outfit", "Noto Sans", "JetBrainsMono Nerd Font Propo", sans-serif;
-  font-size: 12px;
+  font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "JetBrains Mono", sans-serif;
+  font-size: 11.5px;
   color: @text_main;
   border: none;
   border-radius: 0;
-  background: none;
+  background: transparent;
   padding: 0;
   margin: 0;
   box-shadow: none;
   text-shadow: none;
   outline: none;
+  -gtk-icon-shadow: none;
 }
 
 window,
@@ -48,824 +55,656 @@ blankwindow {
   background-color: transparent;
 }
 
-/* ── 3. Control Center Panel ─────────────────────────────────────── */
+/* ── 3. Control Center Container ─────────────────────────────────────────── */
 .control-center {
   background-color: @bg_panel;
   border: 1px solid @border_glass;
-  border-radius: 18px;
-  padding: 12px;
-  min-width: 396px;
+  border-radius: 20px;
+  padding: 14px 14px 12px 14px;
+  margin: 0;
   box-shadow:
-    0px 12px 40px @shadow_deep,
-    0px 0px 0px 0.5px rgba(255, 255, 255, 0.04) inset;
+    0 16px 42px @shadow_deep,
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
-/* ── 4. Clock & Date ─────────────────────────────────────────────── */
+/* ── 4. Header: Clock & Date ──────────────────────────────────────────────── */
 .clock {
-  padding: 2px 4px;
+  margin: 0 4px 0 4px;
+  padding: 0;
 }
 .clock label {
-  font-size: 38px;
-  font-weight: 700;
+  font-size: 34px;
+  font-weight: 800;
   color: @text_main;
-  letter-spacing: 0px;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
 }
+
 .date {
-  padding: 0px 4px 6px 4px;
+  margin: 0 4px 10px 4px;
+  padding: 0;
 }
 .date label {
   font-size: 11px;
-  font-weight: 500;
-  color: @text_sec;
-}
-.widget-label#status {
-  background-color: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.035);
-  border-radius: 12px;
-  margin: 2px 4px 8px 4px;
-  padding: 7px 10px;
-}
-.widget-label#status label {
-  color: @text_sec;
-  font-size: 10.5px;
-  font-weight: 650;
-  line-height: 1.35;
+  font-weight: 600;
+  color: @accent_cyan;
+  letter-spacing: 0.2px;
 }
 
-/* Section Headers */
+/* ── 5. Status Chips Widget ──────────────────────────────────────────────── */
+.status-chips {
+  background-color: transparent;
+  padding: 0;
+  margin: 0 0 8px 0;
+  border: none;
+}
+.status-chips flowbox {
+  background-color: transparent;
+}
+.status-chips flowboxchild {
+  padding: 0 1.5px;
+  margin: 0;
+}
+.status-chips flowboxchild > button {
+  background-color: @bg_card;
+  color: @text_sec;
+  border: 1px solid @border_card;
+  border-radius: 999px;
+  padding: 4px 4px;
+  min-height: 26px;
+  min-width: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.status-chips flowboxchild > button label {
+  font-size: 9px;
+  font-weight: 700;
+  color: inherit;
+  letter-spacing: 0px;
+}
+.status-chips flowboxchild > button:hover {
+  background-color: @bg_card_hover;
+  color: @text_main;
+  border-color: @border_glow;
+  box-shadow:
+    0 2px 8px @shadow_card,
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.status-chips flowboxchild > button:checked,
+.status-chips flowboxchild > button.toggle:checked {
+  background-color: @accent_cyan_dim;
+  background-image: none;
+  color: @accent_cyan_bright;
+  border-color: @accent_cyan;
+  box-shadow:
+    0 0 10px rgba(118, 171, 174, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.status-chips flowboxchild > button:checked label,
+.status-chips flowboxchild > button.toggle:checked label {
+  color: @accent_cyan_bright;
+}
+
+/* ── 6. Section Headers ──────────────────────────────────────────────────── */
 .header-connectivity,
 .header-system,
-.header-appearance,
-.header-media {
-  font-size: 10.5px;
-  font-weight: 700;
-  color: @text_sec;
+.header-appearance {
+  margin: 9px 4px 5px 4px;
+  padding: 0;
+}
+.header-connectivity label,
+.header-system label,
+.header-appearance label {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: @accent_cyan;
   text-transform: uppercase;
-  letter-spacing: 0.7px;
-  margin: 8px 4px 4px 4px;
+  letter-spacing: 1.2px;
+  opacity: 0.90;
 }
 
-/* ── 5. Quick Settings Grid ──────────────────────────────────────── */
+/* ── 7. Quick Settings Grids (Connectivity, System, Appearance) ───────────── */
 .widget-buttons-grid {
   background-color: transparent;
   padding: 0;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   border: none;
 }
-.widget-buttons-grid > flowbox {
+.widget-buttons-grid flowbox {
   background-color: transparent;
 }
-.widget-buttons-grid > flowbox > flowboxchild {
-  padding: 2px;
+.widget-buttons-grid flowboxchild {
+  padding: 2.5px;
+  margin: 0;
 }
-.widget-buttons-grid > flowbox > flowboxchild > button {
-  background-color: @card_inactive;
-  color: @text_main;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 10px;
-  padding: 5px 8px;
-  min-height: 38px;
-  min-width: 116px;
+.widget-buttons-grid flowboxchild > button {
+  background-color: @bg_card;
+  color: @text_sec;
+  border: 1px solid @border_card;
+  border-radius: 13px;
+  padding: 7px 4px;
+  min-height: 40px;
   box-shadow:
-    0 2px 7px rgba(0, 0, 0, 0.18),
-    0 1px 0 rgba(255, 255, 255, 0.035) inset;
+    0 3px 8px @shadow_card,
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.widget-buttons-grid > flowbox > flowboxchild > button label {
-  font-size: 10.5px;
-  font-weight: 600;
-  color: inherit;
-  line-height: 1.25;
-}
-.widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-  border-color: rgba(118, 171, 174, 0.28);
-  box-shadow:
-    0 5px 14px rgba(0, 0, 0, 0.28),
-    0 0 0 1px rgba(118, 171, 174, 0.10) inset;
-}
-.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-  background-color: @card_active;
-  color: @card_active_text;
-  border-color: rgba(143, 200, 203, 0.75);
-  box-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.25),
-    0 0 14px rgba(118, 171, 174, 0.24),
-    0 1px 0 rgba(255, 255, 255, 0.22) inset;
-}
-.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
-  color: @card_active_text;
-}
-.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
-  background-color: #8fc8cb;
-  border-color: rgba(232, 234, 240, 0.40);
-  box-shadow:
-    0 6px 16px rgba(0, 0, 0, 0.30),
-    0 0 18px rgba(118, 171, 174, 0.32),
-    0 1px 0 rgba(255, 255, 255, 0.28) inset;
+
+.connectivity flowboxchild > button,
+.system flowboxchild > button,
+.appearance flowboxchild > button {
+  min-width: 122px;
 }
 
-/* ── 6. Volume & Backlight Sliders ──────────────────────────────── */
+.widget-buttons-grid flowboxchild > button label {
+  font-size: 10px;
+  font-weight: 600;
+  color: inherit;
+  line-height: 1.35;
+}
+.widget-buttons-grid flowboxchild > button:hover {
+  background-color: @bg_card_hover;
+  color: @text_main;
+  border-color: @border_glow;
+  box-shadow:
+    0 5px 14px @shadow_card,
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+.widget-buttons-grid flowboxchild > button:active {
+  box-shadow: 0 1px 3px @shadow_card;
+}
+
+/* Active / checked toggle buttons: illuminated high-contrast pastel pill */
+.widget-buttons-grid flowboxchild > button:checked,
+.widget-buttons-grid flowboxchild > button.toggle:checked {
+  background-color: #76ABAE;
+  background-image: none;
+  color: #0b0f14;
+  border: 1px solid @border_active;
+  box-shadow:
+    0 4px 14px @shadow_glow,
+    inset 0 1px 0 rgba(255, 255, 255, 0.40);
+}
+.widget-buttons-grid flowboxchild > button:checked label,
+.widget-buttons-grid flowboxchild > button.toggle:checked label {
+  color: #0b0f14;
+  font-weight: 750;
+}
+.widget-buttons-grid flowboxchild > button:checked:hover,
+.widget-buttons-grid flowboxchild > button.toggle:checked:hover {
+  background-color: #8ac0c3;
+  border-color: #d1f7f9;
+  box-shadow:
+    0 6px 18px rgba(118, 171, 174, 0.50),
+    inset 0 1px 0 rgba(255, 255, 255, 0.50);
+}
+
+/* ── 8. Volume & Brightness Sliders ──────────────────────────────────────── */
 .widget-volume,
 .widget-backlight {
-  background-color: @card_inactive;
-  padding: 7px 10px;
-  margin: 2px 4px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.02);
+  background-color: @bg_card;
+  border: 1px solid @border_card;
+  border-radius: 13px;
+  padding: 6px 12px;
+  margin: 3px 2px;
+  box-shadow:
+    0 3px 8px @shadow_card,
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.widget-volume:hover,
+.widget-backlight:hover {
+  background-color: @bg_card_hover;
+  border-color: @border_glow;
+  box-shadow:
+    0 4px 12px @shadow_card,
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.widget-volume label,
+.widget-backlight label {
+  font-size: 13px;
+  font-weight: 700;
+  color: @accent_cyan;
+  margin-right: 10px;
 }
 .widget-volume scale,
 .widget-backlight scale {
   margin: 0;
   padding: 0;
-  min-height: 6px;
+  min-height: 8px;
 }
 .widget-volume scale trough,
 .widget-backlight scale trough {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.09);
   border-radius: 999px;
-  min-height: 6px;
+  min-height: 7px;
 }
 .widget-volume scale highlight,
 .widget-backlight scale highlight {
-  background-color: @card_active;
+  background: linear-gradient(90deg, #598d90 0%, #76ABAE 60%, #9fe3e6 100%);
   border-radius: 999px;
-  min-height: 6px;
+  min-height: 7px;
+  box-shadow: 0 0 8px rgba(118, 171, 174, 0.40);
 }
 .widget-volume scale slider,
 .widget-backlight scale slider {
-  background-color: @text_main;
-  border: none;
+  background-color: #ffffff;
+  border: 2px solid @accent_cyan;
   border-radius: 50%;
-  min-width: 10px;
-  min-height: 10px;
-  margin: -2px 0;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
+  min-width: 13px;
+  min-height: 13px;
+  margin: -3px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.40);
+  transition: all 0.15s ease;
 }
-.widget-volume label,
-.widget-backlight label {
-  font-size: 13px;
-  color: @card_active;
-  margin-right: 8px;
+.widget-volume scale slider:hover,
+.widget-backlight scale slider:hover {
+  background-color: #e6f8f9;
+  border-color: @border_active;
+  min-width: 15px;
+  min-height: 15px;
+  margin: -4px 0;
+  box-shadow: 0 0 10px rgba(118, 171, 174, 0.60);
 }
 
-/* ── 7. MPRIS Media Player ───────────────────────────────────────── */
+/* ── 9. Media Player (MPRIS) ─────────────────────────────────────────────── */
 .widget-mpris {
   background-color: transparent;
   padding: 0;
-  margin: 7px 4px 8px 4px;
+  margin: 7px 2px;
 }
 .widget-mpris-player {
-  background:
-    linear-gradient(135deg, rgba(118, 171, 174, 0.14), rgba(26, 28, 42, 0.72) 42%, rgba(247, 118, 142, 0.08));
+  background: linear-gradient(135deg, rgba(118, 171, 174, 0.12) 0%, rgba(26, 30, 44, 0.78) 50%, rgba(122, 162, 247, 0.08) 100%);
   border: 1px solid @border_glass;
-  border-radius: 13px;
+  border-radius: 15px;
   padding: 10px;
-  box-shadow: 0px 5px 16px rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 6px 18px @shadow_deep,
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 .widget-mpris-album-art {
-  border-radius: 10px;
-  margin-right: 10px;
-  min-width: 82px;
-  min-height: 82px;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 11px;
+  margin-right: 12px;
+  min-width: 76px;
+  min-height: 76px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 .widget-mpris-title {
+  font-size: 12.5px;
   font-weight: 700;
-  font-size: 13px;
   color: @text_main;
   margin-bottom: 2px;
 }
 .widget-mpris-subtitle {
   font-size: 11px;
+  font-weight: 500;
   color: @text_sec;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
-.widget-mpris scale { margin: 6px 0 2px 0; }
 .widget-mpris scale trough {
-  background-color: rgba(255, 255, 255, 0.10);
+  background-color: rgba(255, 255, 255, 0.09);
   border-radius: 999px;
   min-height: 4px;
 }
-.widget-mpris scale highlight,
-.widget-mpris scale trough highlight {
-  background-color: @card_active;
+.widget-mpris scale highlight {
+  background-color: @accent_cyan;
   border-radius: 999px;
   min-height: 4px;
-}
-.widget-mpris scale slider {
-  background-color: @text_main;
-  border-radius: 50%;
-  min-width: 6px;
-  min-height: 6px;
-  margin: -1px 0;
-}
-.widget-mpris .widget-mpris-time,
-.widget-mpris .widget-mpris-time-layout {
-  font-size: 10px;
-  color: @text_muted;
-  margin-top: 2px;
 }
 .widget-mpris-player button {
   color: @text_main;
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 50%;
+  min-width: 26px;
+  min-height: 26px;
   padding: 4px;
-  min-width: 22px;
-  min-height: 22px;
-  margin: 6px 3px 0px 3px;
+  margin: 5px 3px 0 3px;
   transition: all 0.18s ease;
-  border: 1px solid rgba(255, 255, 255, 0.03);
 }
-.widget-mpris-player button:hover { background-color: rgba(255, 255, 255, 0.08); }
+.widget-mpris-player button:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: @border_glow;
+}
 .widget-mpris-player .widget-mpris-play,
 .widget-mpris-player .widget-mpris-pause {
-  background-color: @card_active;
-  color: @card_active_text;
-  min-width: 28px;
-  min-height: 28px;
+  background-color: @accent_cyan;
+  color: @text_dark;
+  min-width: 30px;
+  min-height: 30px;
+  box-shadow: 0 2px 8px rgba(118, 171, 174, 0.35);
 }
 .widget-mpris-player .widget-mpris-play:hover,
-.widget-mpris-player .widget-mpris-pause:hover { background-color: #8fc8cb; }
+.widget-mpris-player .widget-mpris-pause:hover {
+  background-color: @accent_cyan_bright;
+}
 
-/* ── 8. Notifications Title Bar ──────────────────────────────────── */
-.widget-title#notifications {
+/* ── 10. Notifications Title Bar ─────────────────────────────────────────── */
+.notifications {
   margin: 8px 4px 6px 4px;
 }
-.widget-title#notifications > label {
-  font-size: 11px;
-  font-weight: 700;
-  color: @text_sec;
-  text-transform: uppercase;
-  letter-spacing: 0.7px;
-}
-/* Clear All Button — pill shape with accent */
-.widget-title#notifications > button {
-  background-color: rgba(118, 171, 174, 0.10);
+.notifications > label {
+  font-size: 9.5px;
+  font-weight: 800;
   color: @accent_cyan;
-  border: 1px solid rgba(118, 171, 174, 0.22);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  opacity: 0.90;
+}
+.notifications > button {
+  background-color: rgba(118, 171, 174, 0.12);
+  color: @accent_cyan_bright;
+  border: 1px solid rgba(118, 171, 174, 0.30);
   border-radius: 999px;
   padding: 3px 12px;
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 700;
-  letter-spacing: 0.2px;
-  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.3px;
+  transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.widget-title#notifications > button:hover {
-  background-color: rgba(118, 171, 174, 0.22);
-  border-color: rgba(118, 171, 174, 0.45);
-  box-shadow: 0 0 10px rgba(118, 171, 174, 0.18);
+.notifications > button:hover {
+  background-color: rgba(118, 171, 174, 0.25);
+  border-color: @accent_cyan;
+  box-shadow: 0 0 12px rgba(118, 171, 174, 0.25);
 }
-.widget-title#notifications > button:active {
-  background-color: @card_active;
-  color: @card_active_text;
+.notifications > button:active {
+  background-color: @accent_cyan;
+  color: @text_dark;
 }
 
-/* ── 9. Notification List & Empty State ──────────────────────────── */
+/* ── 11. Notification List & Empty State ─────────────────────────────────── */
 .control-center-list {
   background-color: transparent;
   padding: 0;
-  margin: 0px 4px;
+  margin: 2px 0;
 }
 .control-center-list-placeholder {
-  opacity: 1.0;
-  margin: 12px 0px;
-}
-.control-center-list-placeholder label {
-  font-size: 11px;
-  font-weight: 500;
-  color: @text_muted;
+  opacity: 0.80;
+  margin: 24px 0;
+  transition: opacity 0.2s ease;
 }
 .control-center-list-placeholder image {
   -gtk-icon-source: url("/home/rigille/.config/swaync/icons/bell.svg");
-  -gtk-icon-size: 24px;
+  -gtk-icon-size: 32px;
+  color: @accent_cyan;
+  margin-bottom: 8px;
+}
+.control-center-list-placeholder label {
+  font-size: 11px;
+  font-weight: 600;
   color: @text_muted;
-  margin-bottom: 6px;
+  letter-spacing: 0.3px;
 }
 
-/* ── 10. MODERN NOTIFICATION CARDS ──────────────────────────────── */
-/*
-   Card anatomy:
-   ┌─────────────────────────────────────────────┐
-   │ [PRIORITY BAR] │ [AVATAR] [APP NAME] [TIME] │
-   │                │ [SUMMARY TITLE]             │
-   │                │ [BODY TEXT]                 │
-   │                │ [QUICK ACTION BUTTONS]      │
-   └─────────────────────────────────────────────┘
-*/
-
-/* Row wrapper — no background, just spacing */
+/* ── 12. Notification Cards (Control Center & Floating Toasts) ────────────── */
 .notification-row {
   outline: none;
   background: transparent;
   box-shadow: none;
   margin-bottom: 6px;
 }
-.notification-row label,
-.notification-row label * {
-  font-style: normal !important;
-}
-.notification-row:focus,
-.notification-row:hover {
+.notification-background {
   background: transparent;
-  box-shadow: none;
+  padding: 3px 2px;
 }
-
-.control-center .notification-background {
-  background-color: rgba(18, 22, 30, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-left: 4px solid #3b82f6; /* Default Blue priority bar */
-  border-radius: 12px;
-  padding: 6px 12px 6px 14px;
-  min-height: 48px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+.notification {
+  background-color: rgba(24, 27, 39, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid @accent_cyan;
+  border-radius: 15px;
+  padding: 10px 14px;
+  margin: 0;
+  box-shadow:
+    0 4px 16px @shadow_card,
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.control-center .notification-row:hover .notification-background {
-  background-color: rgba(28, 32, 42, 0.88);
-  border-color: rgba(255, 255, 255, 0.10);
-  border-left-color: #60a5fa;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
-  transform: translateY(-1px);
+.notification:hover {
+  background-color: rgba(34, 38, 54, 0.94);
+  border-color: rgba(255, 255, 255, 0.12);
+  border-left-color: @accent_cyan_bright;
+  box-shadow:
+    0 8px 24px @shadow_deep,
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-/* App Avatar (icon) — large, rounded */
+/* Urgency Indicator Accents/* Urgência Crítica / Alertas (sem cor vermelha ou efeito de pulso) */
+.notification.critical {
+  border-left: 4px solid @accent_cyan;
+  background-color: rgba(24, 27, 39, 0.84);
+}
+.notification.critical:hover {
+  background-color: rgba(34, 38, 54, 0.94);
+  border-left-color: @accent_cyan_bright;
+}
+
+.notification.low {
+  border-left: 4px solid @accent_amber;
+  background-color: rgba(224, 175, 104, 0.10);
+}
+.notification.low:hover {
+  background-color: rgba(224, 175, 104, 0.16);
+  border-left-color: #f2c77f;
+}
+
+/* App Avatar & Badge */
 .notification-content .image {
   border-radius: 50%;
-  min-width: 46px;
-  min-height: 46px;
-  -gtk-icon-size: 46px;
-  margin: 4px 12px 4px 4px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35), 0 0 10px rgba(118, 171, 174, 0.28);
-  background: linear-gradient(135deg, rgba(118, 171, 174, 0.15), rgba(59, 130, 246, 0.15));
+  min-width: 42px;
+  min-height: 42px;
+  -gtk-icon-size: 42px;
+  margin: 2px 10px 2px 2px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(118, 171, 174, 0.18), rgba(122, 162, 247, 0.12));
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
-
-/* App icon badge (small overlay icon) */
 .notification-content .app-icon {
   border-radius: 50%;
-  -gtk-icon-size: 14px;
-  margin: 3px;
-  background-color: rgba(12, 14, 22, 0.90);
+  -gtk-icon-size: 13px;
+  margin: 2px;
+  background-color: rgba(17, 20, 28, 0.95);
   padding: 2px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* App name — small label above title */
+/* Card Content Typography */
 .app-name {
-  font-weight: 600 !important;
-  font-size: 15px !important;
-  color: @text_main !important;
-  text-transform: none !important;
-  letter-spacing: -0.2px !important;
-  margin-bottom: 2px !important;
-}
-
-/* Summary / title — main readable line */
-.summary {
-  font-weight: 600 !important;
-  font-size: 13px !important;
-  color: rgba(232, 234, 240, 0.80) !important;
-  margin-top: 1px !important;
-  margin-bottom: 1px !important;
-  line-height: 1.35 !important;
-}
-
-/* Body text */
-.body {
-  font-size: 14px !important;
-  color: rgba(232, 234, 240, 0.90) !important;
-  line-height: 1.4 !important;
-  margin-top: 2px !important;
-}
-
-/* Relative time — right-aligned, muted */
-.time {
-  font-size: 11px !important;
-  font-weight: 500 !important;
-  color: rgba(232, 234, 240, 0.55) !important;
-  margin-left: 8px !important;
-  /* Ensure it never wraps */
-  margin-top: 1px !important;
-}
-
-/* Close button — small X circle */
-.control-center .close-button {
-  background-color: rgba(255, 255, 255, 0.06);
-  border-radius: 50%;
-  min-width: 20px;
-  min-height: 20px;
-  margin: 0 0 0 4px;
-  transition:
-    background-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-.control-center .close-button:hover {
-  background-color: rgba(247, 118, 142, 0.30);
-  box-shadow: 0 0 8px rgba(247, 118, 142, 0.20);
-}
-
-/* ── 11. PRIORITY INDICATOR BAR ──────────────────────────────────── */
-/*
-   Left-border color indicates urgency:
-   • Critical → red glow
-   • Low/Info  → amber glow
-   • Normal    → subtle cyan
-*/
-
-/* Critical — red left bar + red tint */
-.notification-row.critical .notification-background {
-  border-left: 3px solid @accent_red;
-  background-color: rgba(247, 118, 142, 0.08);
-  box-shadow: none;
-}
-.notification-row.critical:hover .notification-background {
-  background-color: rgba(247, 118, 142, 0.14);
-  border-left-color: #ff8ea3;
-  box-shadow: none;
-  transform: none;
-}
-
-/* Low urgency — amber left bar */
-.notification-row.low .notification-background {
-  border-left: 3px solid @accent_amber;
-  background-color: rgba(224, 175, 104, 0.07);
-  box-shadow: none;
-}
-.notification-row.low:hover .notification-background {
-  background-color: rgba(224, 175, 104, 0.12);
-  border-left-color: #f0c47b;
-  box-shadow: none;
-  transform: none;
-}
-
-/* ── 12. QUICK ACTION BUTTONS ────────────────────────────────────── */
-.notification-action {
-  margin-top: 10px;
-  /* Use a small gap between action buttons */
-}
-.notification-action button {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(232, 234, 240, 0.80);
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  padding: 5px 14px;
-  margin-right: 6px;
-  box-shadow: none;
-  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.notification-action button:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
-}
-.notification-action button:active {
-  background-color: rgba(255, 255, 255, 0.10);
-}
-
-/* ── 13. NOTIFICATION GROUPING ───────────────────────────────────── */
-/*
-   Groups: outer card wrapping multiple notifications from the same app.
-   Expand/collapse button in the group header.
-*/
-.notification-group {
-  background-color: rgba(16, 18, 28, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
-  padding: 5px;
-  margin-bottom: 8px;
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.35),
-    0 1px 0 rgba(255, 255, 255, 0.03) inset;
-}
-
-/* Group header bar */
-.notification-group-header {
-  padding: 6px 8px 8px 10px;
-  background-color: transparent;
-}
-
-/* Group app name label */
-.notification-group-header-label {
   font-weight: 700;
   font-size: 11px;
-  color: @text_main;
-  letter-spacing: 0px;
+  color: @accent_cyan;
+  letter-spacing: 0.2px;
+  margin-bottom: 2px;
 }
-
-/* Count badge next to group name */
-.notification-group-header-label-count {
+.summary {
+  font-weight: 600;
+  font-size: 12.5px;
+  color: @text_main;
+  line-height: 1.35;
+  margin-bottom: 2px;
+}
+.body {
+  font-size: 11.5px;
+  color: @text_sec;
+  line-height: 1.4;
+}
+.time {
   font-size: 10px;
   font-weight: 600;
   color: @text_muted;
-  margin-left: 4px;
+  margin-left: 8px;
 }
 
-/* EXPAND / COLLAPSE BUTTON */
-.notification-group-header button {
-  background-color: rgba(118, 171, 174, 0.08);
-  color: @accent_cyan;
-  border: 1px solid rgba(118, 171, 174, 0.18);
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  transition:
-    background-color 0.18s ease,
-    border-color 0.18s ease,
-    box-shadow 0.18s ease;
+/* Close button */
+.close-button {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  min-width: 22px;
+  min-height: 22px;
+  margin-left: 6px;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.notification-group-header button:hover {
-  background-color: rgba(118, 171, 174, 0.20);
-  border-color: rgba(118, 171, 174, 0.40);
-  box-shadow: 0 0 10px rgba(118, 171, 174, 0.16);
-}
-.notification-group-header button:active {
-  background-color: @card_active;
-  color: @card_active_text;
+.close-button:hover {
+  background-color: rgba(247, 118, 142, 0.35);
+  border-color: @accent_red;
+  box-shadow: 0 0 10px rgba(247, 118, 142, 0.30);
 }
 
-/* Notifications inside a group */
-.notification-group .notification-row {
-  margin-bottom: 5px;
+/* Action Buttons */
+.notification-action {
+  margin-top: 8px;
 }
-.notification-group .notification-row:last-child {
-  margin-bottom: 0px;
-}
-.notification-group .notification-row .notification-background {
-  background-color: rgba(255, 255, 255, 0.015);
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
-  border-left: 3px solid @accent_cyan;
-  border-radius: 0px;
-  padding: 8px 12px 8px 14px;
-  min-height: 52px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.notification-group .notification-row:hover .notification-background {
-  background-color: rgba(255, 255, 255, 0.045);
-  border-left-color: #8fc8cb;
-  transform: none;
-}
-
-/* Group — critical urgency */
-.notification-group .notification-row.critical .notification-background {
-  border-left: 4px solid @accent_red;
-  background-color: rgba(247, 118, 142, 0.065);
-}
-/* Group — low urgency */
-.notification-group .notification-row.low .notification-background {
-  border-left: 4px solid @accent_amber;
-  background-color: rgba(224, 175, 104, 0.055);
-}
-
-/* ── 14. FLOATING POPUP NOTIFICATIONS ────────────────────────────── */
-/*
-   These are the toast popups that appear in the corner when a
-   notification arrives — same card style, but with stronger shadow.
-*/
-.floating-notifications .notification-row {
-  margin-bottom: 8px;
-}
-.floating-notifications .notification-background {
-  background-color: rgba(18, 22, 30, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-left: 4px solid #3b82f6; /* Blue priority bar */
-  border-radius: 12px;
-  padding: 6px 12px 6px 14px;
-  margin: 6px 10px;
-  min-height: 48px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.floating-notifications .notification-row:hover .notification-background {
-  background-color: rgba(28, 32, 42, 0.88);
-  border-color: rgba(255, 255, 255, 0.10);
-  border-left-color: #60a5fa;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
-  transform: translateY(-1px);
-}
-
-/* Priority indicator on floating cards */
-.floating-notifications .notification-row.critical .notification-background {
-  border-left: 4px solid #ef4444; /* Red priority bar */
-  background-color: rgba(239, 68, 68, 0.08);
-  box-shadow: 0 12px 40px rgba(239, 68, 68, 0.12);
-}
-.floating-notifications .notification-row.low .notification-background {
-  border-left: 4px solid #f59e0b; /* Yellow priority bar */
-  background-color: rgba(245, 158, 11, 0.06);
-  box-shadow: 0 12px 40px rgba(245, 158, 11, 0.08);
-}
-
-/* Quick actions on floating cards */
-.floating-notifications .notification-action button {
+.notification-action button {
   font-size: 10.5px;
   font-weight: 600;
-  color: @accent_cyan;
-  background-color: rgba(118, 171, 174, 0.08);
-  border: 1px solid rgba(118, 171, 174, 0.18);
+  color: @accent_cyan_bright;
+  background-color: rgba(118, 171, 174, 0.10);
+  border: 1px solid rgba(118, 171, 174, 0.25);
   border-radius: 8px;
-  padding: 4px 14px;
+  padding: 4px 12px;
   margin-right: 6px;
-  transition: all 0.15s ease;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.floating-notifications .notification-action button:hover {
-  background-color: rgba(118, 171, 174, 0.20);
-  border-color: rgba(118, 171, 174, 0.40);
-  box-shadow: 0 0 10px rgba(118, 171, 174, 0.16);
-}
-.floating-notifications .notification-action button:active {
-  background-color: @card_active;
-  color: @card_active_text;
+.notification-action button:hover {
+  background-color: rgba(118, 171, 174, 0.22);
+  border-color: @accent_cyan;
+  color: #ffffff;
 }
 
-/* ── 15. INLINE REPLY ────────────────────────────────────────────── */
+/* ── 13. Notification Groups ──────────────────────────────────────────────── */
+.notification-group {
+  background-color: rgba(20, 23, 33, 0.60);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 6px;
+  margin-bottom: 8px;
+  box-shadow:
+    0 4px 16px @shadow_card,
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+.notification-group .notification-group-headers {
+  padding: 6px 8px;
+  background-color: transparent;
+}
+.notification-group .notification-group-header {
+  font-weight: 700;
+  font-size: 11px;
+  color: @text_main;
+}
+.notification-group .notification-group-header-label-count {
+  font-size: 10px;
+  font-weight: 600;
+  color: @accent_cyan;
+  margin-left: 4px;
+}
+.notification-group-buttons button {
+  background-color: rgba(118, 171, 174, 0.10);
+  color: @accent_cyan_bright;
+  border: 1px solid rgba(118, 171, 174, 0.22);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 9.5px;
+  font-weight: 700;
+  transition: all 0.18s ease;
+}
+.notification-group-buttons button:hover {
+  background-color: rgba(118, 171, 174, 0.22);
+  border-color: @accent_cyan;
+}
+.notification-group .notification-row .notification {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: none;
+  border-left: 3px solid @accent_cyan;
+  border-radius: 10px;
+  margin: 3px 2px;
+}
+
+/* ── 14. Inline Reply ────────────────────────────────────────────────────── */
 .inline-reply {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .inline-reply-entry {
   background: rgba(255, 255, 255, 0.04);
   color: @text_main;
-  caret-color: #3b82f6;
-  placeholder-color: rgba(232, 234, 240, 0.40);
+  caret-color: @accent_cyan;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-right: none;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  padding: 6px 12px;
-  min-height: 42px;
-  margin: 0px;
-  transition: border-color 0.20s ease, box-shadow 0.20s ease;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 6px 10px;
+  min-height: 36px;
+  transition: border-color 0.20s ease;
 }
 .inline-reply-entry:focus {
   background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(118, 171, 174, 0.40);
-  box-shadow: none;
+  border-color: @accent_cyan;
 }
 .inline-reply-button {
   background-image: url("/home/rigille/.config/swaync/icons/send.svg");
-  background-size: 16px 16px;
+  background-size: 15px 15px;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: rgba(255, 255, 255, 0.05); /* Glass effect */
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(118, 171, 174, 0.15);
+  border: 1px solid rgba(118, 171, 174, 0.30);
   border-left: none;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-  margin: 0px;
-  padding: 0px;
-  min-height: 42px;
-  min-width: 48px;
-  color: #76ABAE; /* Send icon color (currentColor) */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  min-height: 36px;
+  min-width: 42px;
+  color: @accent_cyan;
   transition: all 0.20s ease;
 }
 .inline-reply-button:hover {
-  background-color: rgba(118, 171, 174, 0.15); /* Accent tint */
-  border-color: rgba(118, 171, 174, 0.25);
-  color: #8fc8cb;
-}
-.inline-reply-button:active {
-  background-color: rgba(118, 171, 174, 0.25);
-}
-.inline-reply-button label {
-  color: transparent !important;
-  font-size: 0px !important;
+  background-color: rgba(118, 171, 174, 0.28);
+  color: @accent_cyan_bright;
 }
 
-/* ── 16. NOTIFICATION CONTENT LAYOUT ────────────────────────────── */
-/* This ensures the icon and text sit side by side cleanly */
-.notification-content {
-  margin-right: 18px;
-}
-
-/* ── 17. SYSTEM INFO FOOTER ──────────────────────────────────────── */
-.widget-label#sysinfo {
-  margin: 8px 4px 2px 4px;
-  padding: 9px 12px;
-  background:
-    linear-gradient(135deg, rgba(118, 171, 174, 0.10), rgba(255, 255, 255, 0.045));
-  border-radius: 12px;
-  border: 1px solid rgba(118, 171, 174, 0.12);
-}
-.widget-label#sysinfo label {
-  font-size: 10.5px;
-  font-weight: 600;
-  color: @text_sec;
-  text-align: center;
-  line-height: 1.35;
-}
-
-/* ── 18. SMOOTH ANIMATIONS — Keyframes ───────────────────────────── */
-/*
-   swaync uses CSS transitions rather than keyframe animations
-   for notification entrance/exit; the transition properties above
-   handle the easing. Below we add subtle pulse for critical alerts.
-*/
-@keyframes critical-pulse {
-  0%   { box-shadow: 0 4px 20px rgba(247, 118, 142, 0.14), 0 0 0 1px rgba(247, 118, 142, 0.15); }
-  50%  { box-shadow: 0 4px 28px rgba(247, 118, 142, 0.28), 0 0 0 2px rgba(247, 118, 142, 0.30); }
-  100% { box-shadow: 0 4px 20px rgba(247, 118, 142, 0.14), 0 0 0 1px rgba(247, 118, 142, 0.15); }
-}
-
-/* Apply pulse animation only to critical notifications in the floating area */
-.floating-notifications .notification-row.critical .notification-background {
-  animation: critical-pulse 2.4s ease-in-out infinite;
-}
-
-/* ── 19. STATUS CHIPS WIDGET ─────────────────────────────────────── */
-#status-chips {
+/* ── 15. System Info Cards (CPU, RAM, NET, UPTIME) ───────────────────────── */
+.sysinfo-grid {
   background-color: transparent;
   padding: 0;
-  margin: 2px 4px 10px 4px;
+  margin: 10px 0 2px 0;
   border: none;
 }
-#status-chips > flowbox {
+.sysinfo-grid flowbox {
   background-color: transparent;
 }
-#status-chips > flowbox > flowboxchild {
-  padding: 0px;
-  margin: 0px;
+.sysinfo-grid flowboxchild {
+  padding: 0 1.5px;
+  margin: 0;
 }
-#status-chips > flowbox > flowboxchild > button {
-  background-color: rgba(255, 255, 255, 0.045);
-  color: rgba(232, 234, 240, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  padding: 5px 4px;
-  min-height: 28px;
-  min-width: 58px;
-  margin: 0px 3px;
-  box-shadow: none;
-  transition: all 0.15s ease;
-}
-#status-chips > flowbox > flowboxchild > button label {
-  font-size: 9.5px;
-  font-weight: 700;
-  color: inherit;
-}
-#status-chips > flowbox > flowboxchild > button:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: rgba(232, 234, 240, 0.85);
-  border-color: rgba(255, 255, 255, 0.07);
-}
-#status-chips > flowbox > flowboxchild > button.toggle:checked {
-  background-color: rgba(118, 171, 174, 0.15);
-  color: #76ABAE;
-  border-color: rgba(118, 171, 174, 0.40);
-}
-#status-chips > flowbox > flowboxchild > button.toggle:checked label {
-  color: #76ABAE;
-}
-#status-chips > flowbox > flowboxchild > button.toggle:checked:hover {
-  background-color: rgba(118, 171, 174, 0.22);
-  color: #8fc8cb;
-  border-color: rgba(118, 171, 174, 0.55);
-}
-
-/* ── 20. SYSINFO CARDS WIDGET ────────────────────────────────────── */
-#sysinfo-grid {
-  background-color: transparent;
-  padding: 0;
-  margin: 6px 4px 2px 4px;
-  border: none;
-}
-#sysinfo-grid > flowbox {
-  background-color: transparent;
-}
-#sysinfo-grid > flowbox > flowboxchild {
-  padding: 0px;
-  margin: 0px;
-}
-#sysinfo-grid > flowbox > flowboxchild > button {
-  background: linear-gradient(135deg, rgba(118, 171, 174, 0.08), rgba(255, 255, 255, 0.03));
+.sysinfo-grid flowboxchild > button {
+  background-color: @bg_card;
   color: @text_main;
-  border: 1px solid rgba(118, 171, 174, 0.12);
+  border: 1px solid rgba(118, 171, 174, 0.18);
   border-radius: 12px;
-  padding: 10px 4px;
-  min-height: 52px;
-  min-width: 89px;
-  margin: 0px 3px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: all 0.20s ease;
+  padding: 6px 1px;
+  min-height: 44px;
+  min-width: 0;
+  box-shadow:
+    0 2px 8px @shadow_card,
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
 }
-#sysinfo-grid > flowbox > flowboxchild > button label {
-  font-size: 10px;
+.sysinfo-grid flowboxchild > button label {
+  font-size: 8.5px;
   font-weight: 700;
   color: @text_sec;
-  line-height: 1.5;
-  text-align: center;
+  line-height: 1.35;
+  letter-spacing: -0.2px;
 }
-#sysinfo-grid > flowbox > flowboxchild > button:hover {
-  background: linear-gradient(135deg, rgba(118, 171, 174, 0.12), rgba(255, 255, 255, 0.05));
-  border-color: rgba(118, 171, 174, 0.25);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+.sysinfo-grid flowboxchild > button:hover {
+  background-color: @bg_card_hover;
+  border-color: @accent_cyan;
+  box-shadow:
+    0 4px 14px @shadow_card,
+    0 0 12px rgba(118, 171, 174, 0.30);
+  transform: translateY(-1px);
 }
+
+
