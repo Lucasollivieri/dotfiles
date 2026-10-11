@@ -1,710 +1,326 @@
-/* =============================================================================
-   SwayNC Premium Hyprland Rice Theme — Modern Glassmorphism Edition
-   Palette: Tokyo Night / Catppuccin Mocha / Nord with Ice Cyan (#76ABAE) Accents
-   Typography: JetBrainsMono Nerd Font
-   ============================================================================= */
+/* SwayNC — compact Control Center and popup notifications */
+@import "themes/current.css";
 
-/* ── 1. Color Palette Definitions ─────────────────────────────────────────── */
-@define-color bg_panel             rgba(16, 19, 27, 0.76);
-@define-color bg_card              rgba(25, 29, 41, 0.72);
-@define-color bg_card_hover        rgba(36, 42, 60, 0.88);
-
-@define-color border_glass         rgba(255, 255, 255, 0.08);
-@define-color border_card          rgba(255, 255, 255, 0.07);
-@define-color border_glow          rgba(118, 171, 174, 0.45);
-@define-color border_active        #b2f0f3;
-
-@define-color accent_cyan          #76ABAE;
-@define-color accent_cyan_bright   #9fe3e6;
-@define-color accent_cyan_dim      rgba(118, 171, 174, 0.22);
-@define-color accent_blue          #7aa2f7;
-@define-color accent_purple        #bb9af7;
-@define-color accent_red           #f7768e;
-@define-color accent_amber         #e0af68;
-@define-color accent_green         #9ece6a;
-
-@define-color text_main            #f0f3f8;
-@define-color text_sec             rgba(240, 243, 248, 0.75);
-@define-color text_muted           rgba(240, 243, 248, 0.45);
-@define-color text_dark            #0b0f14;
-
-@define-color shadow_deep          rgba(0, 0, 0, 0.60);
-@define-color shadow_card          rgba(0, 0, 0, 0.30);
-@define-color shadow_glow          rgba(118, 171, 174, 0.40);
-
-/* ── 2. Base Reset & Font ─────────────────────────────────────────────────── */
 * {
-  font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "JetBrains Mono", sans-serif;
-  font-size: 11.5px;
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", sans-serif;
+  font-size: 12px;
   color: @text_main;
   border: none;
-  border-radius: 0;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
-  text-shadow: none;
   outline: none;
-  -gtk-icon-shadow: none;
+  text-shadow: none;
+  box-shadow: none;
+  transition: 180ms ease;
 }
 
 window,
-notificationwindow,
-blankwindow {
+.blank-window,
+.notificationwindow {
   background: transparent;
-  background-color: transparent;
 }
 
-/* ── 3. Control Center Container ─────────────────────────────────────────── */
 .control-center {
-  background-color: @bg_panel;
-  border: 1px solid @border_glass;
-  border-radius: 20px;
-  padding: 14px 14px 12px 14px;
-  margin: 0;
-  box-shadow:
-    0 16px 42px @shadow_deep,
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-}
-
-/* ── 4. Header: Clock & Date ──────────────────────────────────────────────── */
-.clock {
-  margin: 0 4px 0 4px;
-  padding: 0;
-}
-.clock label {
-  font-size: 34px;
-  font-weight: 800;
-  color: @text_main;
-  letter-spacing: -0.5px;
-  line-height: 1.1;
-}
-
-.date {
-  margin: 0 4px 10px 4px;
-  padding: 0;
-}
-.date label {
-  font-size: 11px;
-  font-weight: 600;
-  color: @accent_cyan;
-  letter-spacing: 0.2px;
-}
-
-/* ── 5. Status Chips Widget ──────────────────────────────────────────────── */
-.status-chips {
-  background-color: transparent;
-  padding: 0;
-  margin: 0 0 8px 0;
-  border: none;
-}
-.status-chips flowbox {
-  background-color: transparent;
-}
-.status-chips flowboxchild {
-  padding: 0 1.5px;
+  background-color: @bg_main;
+  border: 1px solid @border;
+  border-radius: 18px;
+  padding: 14px;
   margin: 0;
 }
-.status-chips flowboxchild > button {
-  background-color: @bg_card;
-  color: @text_sec;
-  border: 1px solid @border_card;
-  border-radius: 999px;
-  padding: 4px 4px;
-  min-height: 26px;
-  min-width: 0;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
+
+.control-center > * {
+  margin: 4px 0;
 }
-.status-chips flowboxchild > button label {
-  font-size: 9px;
-  font-weight: 700;
-  color: inherit;
-  letter-spacing: 0px;
-}
-.status-chips flowboxchild > button:hover {
-  background-color: @bg_card_hover;
+
+#header {
+  background-color: @card;
+  border: 1px solid @border;
+  border-radius: 14px;
+  padding: 14px 16px 14px 58px;
   color: @text_main;
-  border-color: @border_glow;
-  box-shadow:
-    0 2px 8px @shadow_card,
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-.status-chips flowboxchild > button:checked,
-.status-chips flowboxchild > button.toggle:checked {
-  background-color: @accent_cyan_dim;
-  background-image: none;
-  color: @accent_cyan_bright;
-  border-color: @accent_cyan;
-  box-shadow:
-    0 0 10px rgba(118, 171, 174, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-.status-chips flowboxchild > button:checked label,
-.status-chips flowboxchild > button.toggle:checked label {
-  color: @accent_cyan_bright;
-}
-
-/* ── 6. Section Headers ──────────────────────────────────────────────────── */
-.header-connectivity,
-.header-system,
-.header-appearance {
-  margin: 9px 4px 5px 4px;
-  padding: 0;
-}
-.header-connectivity label,
-.header-system label,
-.header-appearance label {
-  font-size: 9.5px;
-  font-weight: 800;
-  color: @accent_cyan;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  opacity: 0.90;
-}
-
-/* ── 7. Quick Settings Grids (Connectivity, System, Appearance) ───────────── */
-.widget-buttons-grid {
-  background-color: transparent;
-  padding: 0;
-  margin-bottom: 2px;
-  border: none;
-}
-.widget-buttons-grid flowbox {
-  background-color: transparent;
-}
-.widget-buttons-grid flowboxchild {
-  padding: 2.5px;
-  margin: 0;
-}
-.widget-buttons-grid flowboxchild > button {
-  background-color: @bg_card;
-  color: @text_sec;
-  border: 1px solid @border_card;
-  border-radius: 13px;
-  padding: 7px 4px;
-  min-height: 40px;
-  box-shadow:
-    0 3px 8px @shadow_card,
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.connectivity flowboxchild > button,
-.system flowboxchild > button,
-.appearance flowboxchild > button {
-  min-width: 122px;
-}
-
-.widget-buttons-grid flowboxchild > button label {
-  font-size: 10px;
-  font-weight: 600;
-  color: inherit;
-  line-height: 1.35;
-}
-.widget-buttons-grid flowboxchild > button:hover {
-  background-color: @bg_card_hover;
-  color: @text_main;
-  border-color: @border_glow;
-  box-shadow:
-    0 5px 14px @shadow_card,
-    inset 0 1px 0 rgba(255, 255, 255, 0.10);
-}
-.widget-buttons-grid flowboxchild > button:active {
-  box-shadow: 0 1px 3px @shadow_card;
-}
-
-/* Active / checked toggle buttons: illuminated high-contrast pastel pill */
-.widget-buttons-grid flowboxchild > button:checked,
-.widget-buttons-grid flowboxchild > button.toggle:checked {
-  background-color: #76ABAE;
-  background-image: none;
-  color: #0b0f14;
-  border: 1px solid @border_active;
-  box-shadow:
-    0 4px 14px @shadow_glow,
-    inset 0 1px 0 rgba(255, 255, 255, 0.40);
-}
-.widget-buttons-grid flowboxchild > button:checked label,
-.widget-buttons-grid flowboxchild > button.toggle:checked label {
-  color: #0b0f14;
-  font-weight: 750;
-}
-.widget-buttons-grid flowboxchild > button:checked:hover,
-.widget-buttons-grid flowboxchild > button.toggle:checked:hover {
-  background-color: #8ac0c3;
-  border-color: #d1f7f9;
-  box-shadow:
-    0 6px 18px rgba(118, 171, 174, 0.50),
-    inset 0 1px 0 rgba(255, 255, 255, 0.50);
-}
-
-/* ── 8. Volume & Brightness Sliders ──────────────────────────────────────── */
-.widget-volume,
-.widget-backlight {
-  background-color: @bg_card;
-  border: 1px solid @border_card;
-  border-radius: 13px;
-  padding: 6px 12px;
-  margin: 3px 2px;
-  box-shadow:
-    0 3px 8px @shadow_card,
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.widget-volume:hover,
-.widget-backlight:hover {
-  background-color: @bg_card_hover;
-  border-color: @border_glow;
-  box-shadow:
-    0 4px 12px @shadow_card,
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-.widget-volume label,
-.widget-backlight label {
   font-size: 13px;
-  font-weight: 700;
-  color: @accent_cyan;
-  margin-right: 10px;
-}
-.widget-volume scale,
-.widget-backlight scale {
-  margin: 0;
-  padding: 0;
-  min-height: 8px;
-}
-.widget-volume scale trough,
-.widget-backlight scale trough {
-  background-color: rgba(255, 255, 255, 0.09);
-  border-radius: 999px;
-  min-height: 7px;
-}
-.widget-volume scale highlight,
-.widget-backlight scale highlight {
-  background: linear-gradient(90deg, #598d90 0%, #76ABAE 60%, #9fe3e6 100%);
-  border-radius: 999px;
-  min-height: 7px;
-  box-shadow: 0 0 8px rgba(118, 171, 174, 0.40);
-}
-.widget-volume scale slider,
-.widget-backlight scale slider {
-  background-color: #ffffff;
-  border: 2px solid @accent_cyan;
-  border-radius: 50%;
-  min-width: 13px;
-  min-height: 13px;
-  margin: -3px 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.40);
-  transition: all 0.15s ease;
-}
-.widget-volume scale slider:hover,
-.widget-backlight scale slider:hover {
-  background-color: #e6f8f9;
-  border-color: @border_active;
-  min-width: 15px;
-  min-height: 15px;
-  margin: -4px 0;
-  box-shadow: 0 0 10px rgba(118, 171, 174, 0.60);
+  font-weight: bold;
+  background-image: url("/home/rigille/.config/swaync/icons/avatar.svg");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  background-size: 30px 30px;
 }
 
-/* ── 9. Media Player (MPRIS) ─────────────────────────────────────────────── */
-.widget-mpris {
-  background-color: transparent;
-  padding: 0;
-  margin: 7px 2px;
+.widget-buttons-grid {
+  background-color: @card;
+  border: 1px solid @border;
+  border-radius: 14px;
+  padding: 7px;
+  margin: 4px 0;
 }
-.widget-mpris-player {
-  background: linear-gradient(135deg, rgba(118, 171, 174, 0.12) 0%, rgba(26, 30, 44, 0.78) 50%, rgba(122, 162, 247, 0.08) 100%);
-  border: 1px solid @border_glass;
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow:
-    0 6px 18px @shadow_deep,
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-.widget-mpris-album-art {
-  border-radius: 11px;
-  margin-right: 12px;
-  min-width: 76px;
-  min-height: 76px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-}
-.widget-mpris-title {
-  font-size: 12.5px;
-  font-weight: 700;
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background-color: @card_alt;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  min-height: 42px;
+  margin: 3px;
+  padding: 5px 7px;
   color: @text_main;
-  margin-bottom: 2px;
 }
-.widget-mpris-subtitle {
-  font-size: 11px;
-  font-weight: 500;
-  color: @text_sec;
-  margin-bottom: 5px;
-}
-.widget-mpris scale trough {
-  background-color: rgba(255, 255, 255, 0.09);
-  border-radius: 999px;
-  min-height: 4px;
-}
-.widget-mpris scale highlight {
-  background-color: @accent_cyan;
-  border-radius: 999px;
-  min-height: 4px;
-}
-.widget-mpris-player button {
-  color: @text_main;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+
+#sysinfo-grid > flowbox > flowboxchild > button {
+  min-height: 62px;
   border-radius: 50%;
-  min-width: 26px;
-  min-height: 26px;
+  min-width: 62px;
   padding: 4px;
-  margin: 5px 3px 0 3px;
-  transition: all 0.18s ease;
+  border: 2px solid @accent;
+  background-color: @card;
+  color: @accent_light;
+  font-size: 11px;
 }
-.widget-mpris-player button:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-  border-color: @border_glow;
+
+#sysinfo-grid > flowbox > flowboxchild > button:hover {
+  background-color: @accent;
+  color: @bg_main;
 }
-.widget-mpris-player .widget-mpris-play,
-.widget-mpris-player .widget-mpris-pause {
-  background-color: @accent_cyan;
-  color: @text_dark;
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover,
+.widget-buttons-grid > flowbox > flowboxchild > button:checked {
+  background-color: @accent;
+  color: @bg_main;
+  border-color: @accent_light;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:active {
+  background-color: @accent_light;
+}
+
+.widget-volume {
+  background-color: @card;
+  border: 1px solid @border;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.widget-volume trough,
+.widget-volume progressbar,
+progressbar,
+progress,
+trough {
+  min-height: 8px;
+  border-radius: 8px;
+}
+
+.widget-volume trough,
+trough {
+  background-color: @inactive;
+}
+
+.widget-volume progress,
+progressbar progress {
+  background-color: @accent;
+}
+
+.widget-mpris {
+  background-color: @card;
+  border: 1px solid @border;
+  border-radius: 14px;
+  padding: 10px;
+  margin: 4px 0;
+}
+
+.widget-mpris button {
+  background-color: @card_alt;
+  border-radius: 9px;
+  padding: 6px;
+  color: @text_main;
+}
+
+.widget-mpris button:hover {
+  background-color: @accent;
+  color: @bg_main;
+}
+
+.widget-title {
+  background-color: @card;
+  border: 1px solid @border;
+  border-radius: 12px;
+  padding: 6px 10px;
+  margin-top: 5px;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+
+.control-center .notifications {
+  min-height: 24px;
+  margin-top: 0;
+}
+
+.widget-title button {
+  background-color: @card_alt;
+  border-radius: 8px;
+  padding: 5px 9px;
+  color: @text_secondary;
+}
+
+.widget-title button:hover {
+  background-color: @accent;
+  color: @bg_main;
+}
+
+.notification-row {
+  margin: 0;
+  padding: 0;
+}
+
+/* Floating notification popups: one compact surface, no decorative outer frame */
+.floating-notifications {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.floating-notifications .notification-row {
+  margin: 6px 10px 0 10px;
+  padding: 0;
+}
+
+.floating-notifications .notification-row .notification-background {
+  background-color: @bg_main;
+  border: 1px solid @border;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.floating-notifications .notification-row .notification-background:hover {
+  background-color: @bg_main;
+  border-color: @accent;
+}
+
+.floating-notifications .notification {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.floating-notifications .notification-content {
+  margin: 0;
+  padding: 9px 10px 9px 8px;
+}
+
+.floating-notifications .summary {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: @text_main;
+}
+
+.floating-notifications .body {
+  margin: 3px 0 0 0;
+  color: @text_secondary;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.floating-notifications .image {
   min-width: 30px;
   min-height: 30px;
-  box-shadow: 0 2px 8px rgba(118, 171, 174, 0.35);
-}
-.widget-mpris-player .widget-mpris-play:hover,
-.widget-mpris-player .widget-mpris-pause:hover {
-  background-color: @accent_cyan_bright;
+  margin: 0 9px 0 1px;
+  opacity: 1;
 }
 
-/* ── 10. Notifications Title Bar ─────────────────────────────────────────── */
-.notifications {
-  margin: 8px 4px 6px 4px;
-}
-.notifications > label {
-  font-size: 9.5px;
-  font-weight: 800;
-  color: @accent_cyan;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  opacity: 0.90;
-}
-.notifications > button {
-  background-color: rgba(118, 171, 174, 0.12);
-  color: @accent_cyan_bright;
-  border: 1px solid rgba(118, 171, 174, 0.30);
-  border-radius: 999px;
-  padding: 3px 12px;
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.notifications > button:hover {
-  background-color: rgba(118, 171, 174, 0.25);
-  border-color: @accent_cyan;
-  box-shadow: 0 0 12px rgba(118, 171, 174, 0.25);
-}
-.notifications > button:active {
-  background-color: @accent_cyan;
-  color: @text_dark;
-}
-
-/* ── 11. Notification List & Empty State ─────────────────────────────────── */
-.control-center-list {
-  background-color: transparent;
+.floating-notifications .close-button {
+  min-width: 16px;
+  min-height: 16px;
+  margin: 5px;
   padding: 0;
-  margin: 2px 0;
-}
-.control-center-list-placeholder {
-  opacity: 0.80;
-  margin: 24px 0;
-  transition: opacity 0.2s ease;
-}
-.control-center-list-placeholder image {
-  -gtk-icon-source: url("/home/rigille/.config/swaync/icons/bell.svg");
-  -gtk-icon-size: 32px;
-  color: @accent_cyan;
-  margin-bottom: 8px;
-}
-.control-center-list-placeholder label {
-  font-size: 11px;
-  font-weight: 600;
-  color: @text_muted;
-  letter-spacing: 0.3px;
+  border-radius: 50%;
+  background-color: transparent;
+  color: @text_secondary;
 }
 
-/* ── 12. Notification Cards (Control Center & Floating Toasts) ────────────── */
-.notification-row {
-  outline: none;
+.floating-notifications .close-button:hover {
+  background-color: @danger;
+  color: @text_main;
+}
+
+.floating-notifications .notification-action {
+  margin: 3px;
+  padding: 4px 7px;
+  border-radius: 7px;
+  background-color: @card_alt;
+}
+
+.floating-notifications .notification.critical .notification-background {
+  border-color: @danger;
+}
+
+.control-center .notification-row {
+  margin: 3px 0;
+  padding: 0;
   background: transparent;
+  border: none;
   box-shadow: none;
-  margin-bottom: 6px;
 }
-.notification-background {
-  background: transparent;
-  padding: 3px 2px;
-}
-.notification {
-  background-color: rgba(24, 27, 39, 0.84);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 4px solid @accent_cyan;
-  border-radius: 15px;
-  padding: 10px 14px;
+
+.control-center .notification {
   margin: 0;
-  box-shadow:
-    0 4px 16px @shadow_card,
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.notification:hover {
-  background-color: rgba(34, 38, 54, 0.94);
-  border-color: rgba(255, 255, 255, 0.12);
-  border-left-color: @accent_cyan_bright;
-  box-shadow:
-    0 8px 24px @shadow_deep,
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-/* Urgency Indicator Accents/* Urgência Crítica / Alertas (sem cor vermelha ou efeito de pulso) */
-.notification.critical {
-  border-left: 4px solid @accent_cyan;
-  background-color: rgba(24, 27, 39, 0.84);
-}
-.notification.critical:hover {
-  background-color: rgba(34, 38, 54, 0.94);
-  border-left-color: @accent_cyan_bright;
-}
-
-.notification.low {
-  border-left: 4px solid @accent_amber;
-  background-color: rgba(224, 175, 104, 0.10);
-}
-.notification.low:hover {
-  background-color: rgba(224, 175, 104, 0.16);
-  border-left-color: #f2c77f;
-}
-
-/* App Avatar & Badge */
-.notification-content .image {
-  border-radius: 50%;
-  min-width: 42px;
-  min-height: 42px;
-  -gtk-icon-size: 42px;
-  margin: 2px 10px 2px 2px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(135deg, rgba(118, 171, 174, 0.18), rgba(122, 162, 247, 0.12));
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-.notification-content .app-icon {
-  border-radius: 50%;
-  -gtk-icon-size: 13px;
-  margin: 2px;
-  background-color: rgba(17, 20, 28, 0.95);
-  padding: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-/* Card Content Typography */
-.app-name {
-  font-weight: 700;
-  font-size: 11px;
-  color: @accent_cyan;
-  letter-spacing: 0.2px;
-  margin-bottom: 2px;
-}
-.summary {
-  font-weight: 600;
-  font-size: 12.5px;
-  color: @text_main;
-  line-height: 1.35;
-  margin-bottom: 2px;
-}
-.body {
-  font-size: 11.5px;
-  color: @text_sec;
-  line-height: 1.4;
-}
-.time {
-  font-size: 10px;
-  font-weight: 600;
-  color: @text_muted;
-  margin-left: 8px;
-}
-
-/* Close button */
-.close-button {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 50%;
-  min-width: 22px;
-  min-height: 22px;
-  margin-left: 6px;
-  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.close-button:hover {
-  background-color: rgba(247, 118, 142, 0.35);
-  border-color: @accent_red;
-  box-shadow: 0 0 10px rgba(247, 118, 142, 0.30);
-}
-
-/* Action Buttons */
-.notification-action {
-  margin-top: 8px;
-}
-.notification-action button {
-  font-size: 10.5px;
-  font-weight: 600;
-  color: @accent_cyan_bright;
-  background-color: rgba(118, 171, 174, 0.10);
-  border: 1px solid rgba(118, 171, 174, 0.25);
-  border-radius: 8px;
-  padding: 4px 12px;
-  margin-right: 6px;
-  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.notification-action button:hover {
-  background-color: rgba(118, 171, 174, 0.22);
-  border-color: @accent_cyan;
-  color: #ffffff;
-}
-
-/* ── 13. Notification Groups ──────────────────────────────────────────────── */
-.notification-group {
-  background-color: rgba(20, 23, 33, 0.60);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 6px;
-  margin-bottom: 8px;
-  box-shadow:
-    0 4px 16px @shadow_card,
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-}
-.notification-group .notification-group-headers {
-  padding: 6px 8px;
-  background-color: transparent;
-}
-.notification-group .notification-group-header {
-  font-weight: 700;
-  font-size: 11px;
-  color: @text_main;
-}
-.notification-group .notification-group-header-label-count {
-  font-size: 10px;
-  font-weight: 600;
-  color: @accent_cyan;
-  margin-left: 4px;
-}
-.notification-group-buttons button {
-  background-color: rgba(118, 171, 174, 0.10);
-  color: @accent_cyan_bright;
-  border: 1px solid rgba(118, 171, 174, 0.22);
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 9.5px;
-  font-weight: 700;
-  transition: all 0.18s ease;
-}
-.notification-group-buttons button:hover {
-  background-color: rgba(118, 171, 174, 0.22);
-  border-color: @accent_cyan;
-}
-.notification-group .notification-row .notification {
-  background-color: rgba(255, 255, 255, 0.02);
-  border: none;
-  border-left: 3px solid @accent_cyan;
-  border-radius: 10px;
-  margin: 3px 2px;
-}
-
-/* ── 14. Inline Reply ────────────────────────────────────────────────────── */
-.inline-reply {
-  margin-top: 8px;
-}
-.inline-reply-entry {
-  background: rgba(255, 255, 255, 0.04);
-  color: @text_main;
-  caret-color: @accent_cyan;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-right: none;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  padding: 6px 10px;
-  min-height: 36px;
-  transition: border-color 0.20s ease;
-}
-.inline-reply-entry:focus {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: @accent_cyan;
-}
-.inline-reply-button {
-  background-image: url("/home/rigille/.config/swaync/icons/send.svg");
-  background-size: 15px 15px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(118, 171, 174, 0.15);
-  border: 1px solid rgba(118, 171, 174, 0.30);
-  border-left: none;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  min-height: 36px;
-  min-width: 42px;
-  color: @accent_cyan;
-  transition: all 0.20s ease;
-}
-.inline-reply-button:hover {
-  background-color: rgba(118, 171, 174, 0.28);
-  color: @accent_cyan_bright;
-}
-
-/* ── 15. System Info Cards (CPU, RAM, NET, UPTIME) ───────────────────────── */
-.sysinfo-grid {
-  background-color: transparent;
   padding: 0;
-  margin: 10px 0 2px 0;
+  background: transparent;
   border: none;
+  box-shadow: none;
 }
-.sysinfo-grid flowbox {
-  background-color: transparent;
+
+.control-center .notification-background {
+  background-color: @card;
+  border: 1px solid @border;
+  border-radius: 10px;
+  padding: 0;
+  box-shadow: none;
 }
-.sysinfo-grid flowboxchild {
-  padding: 0 1.5px;
+
+.control-center .notification-background:hover {
+  border-color: @accent;
+}
+
+.control-center .notification-content {
   margin: 0;
+  padding: 7px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
-.sysinfo-grid flowboxchild > button {
-  background-color: @bg_card;
+
+.control-center .summary {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.control-center .body {
+  color: @text_secondary;
+  font-size: 11px;
+}
+
+.close-button,
+.notification-action {
+  background-color: @card_alt;
+  border-radius: 8px;
+  padding: 4px 7px;
   color: @text_main;
-  border: 1px solid rgba(118, 171, 174, 0.18);
-  border-radius: 12px;
-  padding: 6px 1px;
-  min-height: 44px;
-  min-width: 0;
-  box-shadow:
-    0 2px 8px @shadow_card,
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: all 0.20s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.sysinfo-grid flowboxchild > button label {
-  font-size: 8.5px;
-  font-weight: 700;
-  color: @text_sec;
-  line-height: 1.35;
-  letter-spacing: -0.2px;
-}
-.sysinfo-grid flowboxchild > button:hover {
-  background-color: @bg_card_hover;
-  border-color: @accent_cyan;
-  box-shadow:
-    0 4px 14px @shadow_card,
-    0 0 12px rgba(118, 171, 174, 0.30);
-  transform: translateY(-1px);
 }
 
+.close-button:hover,
+.notification-action:hover {
+  background-color: @accent;
+  color: @bg_main;
+}
 
+.notification-group-headers {
+  color: @accent_light;
+  font-weight: bold;
+}
+
+.control-center scrollbar trough {
+  background-color: @card;
+}
+
+.control-center scrollbar slider {
+  background-color: @inactive;
+  border-radius: 6px;
+}

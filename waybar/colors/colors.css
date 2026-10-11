@@ -1,25 +1,21 @@
-@define-color bg0 #282c34;
-@define-color bg1 #222831;
-@define-color bg2 #31363F;
-@define-color bg3 #3e4451;
-@define-color bg4 #4b5263;
-
-@define-color red    #f7768e;
-@define-color orange #ff9e64;
-@define-color green  #3B9797;
-@define-color yellow #e0af68;
-@define-color green  #9ece6a;
-@define-color green1 #76ABAE;
-@define-color aqua   #0db9d7;
-@define-color blue   #16476A;
-@define-color blue1  #7AAACE;
-@define-color blue2  #9CD5FF;
-@define-color purple #bb9af7;
-@define-color offwhite #F7F8F0;
-@define-color white #EEEEEE;
-
-@define-color fg     #a9b1d6;
-
-@define-color grey0 #565f89;
-@define-color grey1 #6c7a9c;
-@define-color grey2 #7f8ebf;
+@define-color bg0 #11161D;
+@define-color bg1 #1A222C;
+@define-color bg2 #253240;
+@define-color bg3 #344555;
+@define-color bg4 #8FA1B2;
+@define-color red #BF616A;
+@define-color orange #EBCB8B;
+@define-color green #A3BE8C;
+@define-color yellow #EBCB8B;
+@define-color green1 #88C0D0;
+@define-color aqua #B5E3EC;
+@define-color blue #88C0D0;
+@define-color blue1 #88C0D0;
+@define-color blue2 #B5E3EC;
+@define-color purple #88C0D0;
+@define-color offwhite #E5EDF5;
+@define-color white #E5EDF5;
+@define-color fg #E5EDF5;
+@define-color grey0 #8FA1B2;
+@define-color grey1 #8FA1B2;
+@define-color grey2 #8FA1B2;

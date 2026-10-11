@@ -1,0 +1,15 @@
+name=Nordic Frost
+description=Cool blue-gray surfaces with icy accents
+background=#11161D
+surface=#1A222C
+surface_alt=#253240
+text=#E5EDF5
+text_muted=#8FA1B2
+border=#344555
+accent=#88C0D0
+accent_hover=#B5E3EC
+selected=#5E81AC
+success=#A3BE8C
+warning=#EBCB8B
+error=#BF616A
+is_dark=true

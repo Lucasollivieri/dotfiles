@@ -1,0 +1,11 @@
+/* Shared semantic tokens — Abyssal Teal dark */
+@define-color bg_main #05080C;
+@define-color card #0D151B;
+@define-color card_alt #14232A;
+@define-color accent #4E858A;
+@define-color accent_light #8FC4C2;
+@define-color text_main #DCE8EA;
+@define-color text_secondary #71858D;
+@define-color border #1B3037;
+@define-color inactive #263B42;
+@define-color danger #B76570;

@@ -1,0 +1,15 @@
+name=Light Minimal
+description=Bright neutral surfaces with restrained blue accent
+background=#F2F4F5
+surface=#FFFFFF
+surface_alt=#E7EBEE
+text=#1C252B
+text_muted=#60717B
+border=#CBD5DA
+accent=#397B82
+accent_hover=#245E65
+selected=#A9D0D2
+success=#397B5A
+warning=#8A681E
+error=#A3454E
+is_dark=false

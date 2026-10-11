@@ -1,16 +1,18 @@
 * {
-    bg:             #222831;
-    bg-highlight:   #31363F;
-    fg:             #EEEEEE;
-    blue:           #76ABAE;
-    green:          #9ece6a;
-    red:            #f7768e;
-
+    bg:             #11161D;
+    bg-highlight:   #253240;
+    fg:             #E5EDF5;
+    muted:          #8FA1B2;
+    teal:           #88C0D0;
+    teal-bright:    #B5E3EC;
+    border-color:   #344555;
+    inactive:       #253240;
+    red:            #BF616A;
     background:     @bg;
     background-alt: @bg-highlight;
     foreground:     @fg;
-    selected:       @blue;
-    active:         @green;
+    selected:       @teal;
+    active:         @teal-bright;
     urgent:         @red;
-    border:         #31363F;
+    border:         @border-color;
 }

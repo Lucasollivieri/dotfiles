@@ -1,0 +1,15 @@
+name=Graphite
+description=Neutral graphite with precise silver contrast
+background=#101214
+surface=#191C20
+surface_alt=#24282D
+text=#E6E8EB
+text_muted=#9299A3
+border=#353B43
+accent=#AAB4C0
+accent_hover=#D2D8DF
+selected=#697786
+success=#91B38A
+warning=#C6A66B
+error=#C4777F
+is_dark=true

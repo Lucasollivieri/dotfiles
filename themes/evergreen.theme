@@ -1,0 +1,15 @@
+name=Evergreen
+description=Deep forest green with natural highlights
+background=#08110D
+surface=#102019
+surface_alt=#183027
+text=#DDEBE1
+text_muted=#829A8A
+border=#294338
+accent=#6FA98A
+accent_hover=#A6D3B5
+selected=#3E765B
+success=#86B98F
+warning=#C5A86B
+error=#C97878
+is_dark=true

@@ -1,0 +1,15 @@
+name=Abyssal Teal
+description=Deep charcoal with restrained teal accents
+background=#05080C
+surface=#0D151B
+surface_alt=#14232A
+text=#DCE8EA
+text_muted=#71858D
+border=#1B3037
+accent=#4E858A
+accent_hover=#8FC4C2
+selected=#4E858A
+success=#75A88A
+warning=#B59A68
+error=#B76570
+is_dark=true
